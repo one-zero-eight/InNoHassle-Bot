@@ -1,0 +1,9 @@
+{
+  "imports": {
+    "dotenv": "https://deno.land/std@0.201.0/dotenv/mod.ts",
+    "grammy": "https://deno.land/x/grammy@v1.18.1/mod.ts"
+  },
+  "tasks": {
+    "start": "deno run --allow-env=BOT_TOKEN --allow-net --allow-read=.env,.env.defaults,.env.example src/bot.ts"
+  }
+}
