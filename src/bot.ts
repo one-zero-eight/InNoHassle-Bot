@@ -1,16 +1,18 @@
-import { config } from "./config.ts";
-
 import { Bot } from "grammy";
+import { config } from "./config.ts";
 
 const bot = new Bot(config.BOT_TOKEN);
 
 /**
- * @param {number} gpa - TODO
- * @returns {number} TODO
+ * Returns the scholarship in rubles from the given GPA.
  */
 function calculateScholarship(gpa: number): number {
-  if (!(2 <= gpa && gpa <= 5)) {
-    throw new RangeError(/* TODO */);
+  if (isNaN(gpa)) {
+    throw new Error("GPA must not be NaN");
+  }
+
+  if (!(2.0 <= gpa && gpa <= 5.0)) {
+    throw new RangeError(`GPA (${gpa}) is out of range [2.0, 5.0]`);
   }
 
   const M_MIN = 3000;
