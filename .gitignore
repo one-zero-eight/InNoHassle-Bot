@@ -1,35 +1,14 @@
-*.orig
-*.pyc
-*.swp
-.env
+# Sensitive data
+.env*
+!.env.example
 
-/.cargo_home/
-/.helix/
-/.idea/
-/.vs/
-/.vscode/
-gclient_config.py_entries
-/target/
-/std/hash/_wasm/target
-/tools/wpt/manifest.json
-/third_party/
-/test_napi/node_modules
-/test_napi/build
-/test_napi/third_party_tests/node_modules
+# Editors
+.idea/
+.vs/
+.helix/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.example.json
 
-# MacOS generated files
+# Misc
 .DS_Store
-.DS_Store?
-
-# Flamegraphs
-/flamebench*.svg
-/flamegraph*.svg
-
-# WPT generated cert files
-/tools/wpt/certs/index.txt*
-/tools/wpt/certs/serial*
-
-/ext/websocket/autobahn/reports
-
-# JUnit files produced by deno test --junit
-junit.xml
