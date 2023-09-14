@@ -1,26 +1,17 @@
 import { load } from "dotenv";
+import { z } from "zod";
 
-export interface BotConfig {
-  BOT_TOKEN: string;
-}
+export const Config = z.object({
+  BOT_TOKEN: z.string(),
+});
+export type Config = z.infer<typeof Config>;
 
-async function loadConfig(): Promise<BotConfig> {
-  await load({ export: true });
-  const config = {} as BotConfig;
-
-  const variables = ["BOT_TOKEN"] as const;
-
-  for (const key of variables) {
-    const value = Deno.env.get(key);
-
-    if (!value) {
-      throw new Error(`The \`${key}\` environment variable isn't set.`);
-    }
-
-    config[key] = value;
-  }
-
-  return config;
+async function loadConfig(): Promise<Config> {
+  await load({
+    envPath: ".env",
+    export: true,
+  });
+  return Config.parse(Deno.env.toObject());
 }
 
 export const config = await loadConfig();

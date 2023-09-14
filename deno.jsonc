@@ -1,6 +1,7 @@
 {
   "imports": {
     "dotenv": "https://deno.land/std@0.201.0/dotenv/mod.ts",
+    "zod": "https://deno.land/x/zod@v3.22.2/mod.ts",
     "grammy": "https://deno.land/x/grammy@v1.18.1/mod.ts"
   },
   "tasks": {
