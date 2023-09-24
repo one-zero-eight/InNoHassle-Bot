@@ -8,11 +8,10 @@ const bot = new Bot(config.BOT_TOKEN);
  */
 function calculateScholarship(gpa: number): number {
   if (isNaN(gpa)) {
-    throw new Error("GPA must not be NaN");
+    throw new Error("The GPA must not be NaN");
   }
-
   if (!(2.0 <= gpa && gpa <= 5.0)) {
-    throw new RangeError(`GPA (${gpa}) is out of range [2.0, 5.0]`);
+    throw new RangeError(`The GPA (${gpa}) is out of range [2.0, 5.0]`);
   }
 
   const M_MIN = 3000;
@@ -20,7 +19,6 @@ function calculateScholarship(gpa: number): number {
 
   let s = M_MIN + (M_MAX - M_MIN) * ((gpa - 2) / 3) ** 2.5;
   s = Math.floor(s / 100) * 100;
-
   return s;
 }
 
@@ -30,8 +28,12 @@ bot.on("message:text", async (ctx) => {
   try {
     const scholarship = calculateScholarship(gpa);
     await ctx.reply(scholarship.toString());
-  } catch (_) {
-    ctx.reply("Invalid input!");
+  } catch (e: unknown) {
+    if (e instanceof RangeError) {
+      ctx.reply(e.message);
+    } else {
+      ctx.reply("Invalid input!");
+    }
   }
 });
 
