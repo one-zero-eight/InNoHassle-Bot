@@ -5,7 +5,8 @@
 # Editors
 .idea/
 .vs/
-.helix/
+.helix/*
+!.helix/languages.toml
 .vscode/*
 !.vscode/extensions.json
 !.vscode/settings.example.json
