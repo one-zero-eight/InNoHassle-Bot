@@ -19,9 +19,9 @@ export const mySession = session({
     eapGroup: EapGroup.Other,
     mutedTill: undefined,
     wasMutedFor: WasMutedFor.None,
-  }),
+  } as SessionData),
   getSessionKey: (ctx) => ctx.from?.id.toString(),
-  storage: new FileAdapter({ dirName: "sessions" }),
+  storage: new FileAdapter(/* { dirName: "sessions" } */),
 });
 
 export const enum Language {
