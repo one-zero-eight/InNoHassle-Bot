@@ -1,6 +1,7 @@
 # Sensitive data
 .env*
 !.env.example
+/sessions/
 
 # Editors
 .idea/

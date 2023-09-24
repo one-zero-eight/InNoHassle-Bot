@@ -1,14 +1,21 @@
 import { Bot } from "grammy";
-import { config } from "./config.ts";
 
-const bot = new Bot(config.BOT_TOKEN);
+import { config } from "./config.ts";
+import { MyContext, mySession } from "./session.ts";
+
+const bot = new Bot<MyContext>(config.BOT_TOKEN);
+bot.use(mySession);
+
+// function guessPreferredLanguage(_language_code: string): Language {
+//   return Language.En;
+// }
 
 /**
  * Returns the scholarship in rubles from the given GPA.
  */
 function calculateScholarship(gpa: number): number {
   if (isNaN(gpa)) {
-    throw new Error("The GPA must not be NaN");
+    throw new Error("The GPA mustn't be NaN");
   }
   if (!(2.0 <= gpa && gpa <= 5.0)) {
     throw new RangeError(`The GPA (${gpa}) is out of range [2.0, 5.0]`);
@@ -21,6 +28,9 @@ function calculateScholarship(gpa: number): number {
   s = Math.floor(s / 100) * 100;
   return s;
 }
+
+bot.command("start", async (_) => {
+});
 
 bot.on("message:text", async (ctx) => {
   const gpa = parseFloat(ctx.message.text);
@@ -37,4 +47,5 @@ bot.on("message:text", async (ctx) => {
   }
 });
 
+bot.catch((e) => console.error(e));
 bot.start();

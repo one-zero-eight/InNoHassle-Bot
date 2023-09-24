@@ -1,4 +1,7 @@
-export interface SessionData {
+import { Context, session, SessionFlavor } from "grammy";
+import { FileAdapter } from "grammy_storages_file";
+
+interface SessionData {
   language: Language;
   notifications?: Date;
   studyGroup: StudyGroup;
@@ -7,12 +10,25 @@ export interface SessionData {
   wasMutedFor: WasMutedFor;
 }
 
+export type MyContext = Context & SessionFlavor<SessionData>;
+export const mySession = session({
+  initial: () => ({
+    language: Language.En,
+    notifications: undefined,
+    studyGroup: StudyGroup.Other,
+    eapGroup: EapGroup.Other,
+    mutedTill: undefined,
+    wasMutedFor: WasMutedFor.None,
+  }),
+  getSessionKey: (ctx) => ctx.from?.id.toString(),
+  storage: new FileAdapter({ dirName: "sessions" }),
+});
+
 export const enum Language {
   En = "English",
-  Ru = "Russian",
 }
 
-export const enum StudyGroup {
+const enum StudyGroup {
   // BS Year 1
   B23Dsai01 = "B23-DSAI-01",
   B23Dsai02 = "B23-DSAI-02",
@@ -68,7 +84,7 @@ export const enum StudyGroup {
   Other = "Other",
 }
 
-export const enum EapGroup {
+const enum EapGroup {
   // Beginner Level
   Eap0G1 = "EAP0-1",
   Eap0G2 = "EAP0-2",
@@ -93,7 +109,7 @@ export const enum EapGroup {
   Other = "Other",
 }
 
-export const enum WasMutedFor {
+const enum WasMutedFor {
   None,
   Day,
   Week,
