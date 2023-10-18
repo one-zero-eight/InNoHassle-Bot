@@ -1,9 +1,10 @@
 {
   "imports": {
-    "dotenv": "https://deno.land/std@0.201.0/dotenv/mod.ts",
-    "grammy": "https://deno.land/x/grammy@v1.18.1/mod.ts",
-    "grammy_storages_file": "https://deno.land/x/grammy_storages@v2.3.2/file/src/mod.ts",
-    "zod": "https://deno.land/x/zod@v3.22.2/mod.ts"
+    "dotenv": "https://deno.land/std@0.204.0/dotenv/mod.ts",
+    "grammy": "https://deno.land/x/grammy@v1.19.1/mod.ts",
+    "grammy_i18n": "https://deno.land/x/grammy_i18n@v1.0.1/mod.ts",
+    "grammy_storages_file": "https://deno.land/x/grammy_storages@v2.4.0/file/src/mod.ts",
+    "zod": "https://deno.land/x/zod@v3.22.4/mod.ts"
   },
   "tasks": {
     "start": "deno run --allow-env --allow-net --allow-read --allow-write src/bot.ts"
