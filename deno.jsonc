@@ -2,7 +2,9 @@
   "imports": {
     "dotenv": "https://deno.land/std@0.204.0/dotenv/mod.ts",
     "grammy": "https://deno.land/x/grammy@v1.19.1/mod.ts",
+    "grammy_conversations": "https://deno.land/x/grammy_conversations@v1.1.2/mod.ts",
     "grammy_i18n": "https://deno.land/x/grammy_i18n@v1.0.1/mod.ts",
+    "grammy_menu": "https://deno.land/x/grammy_menu@v1.2.1/mod.ts",
     "grammy_storages_file": "https://deno.land/x/grammy_storages@v2.4.0/file/src/mod.ts",
     "zod": "https://deno.land/x/zod@v3.22.4/mod.ts"
   },

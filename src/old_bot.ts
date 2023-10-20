@@ -1,65 +1,21 @@
-import { Bot, Context, InlineKeyboard, session, SessionFlavor } from "grammy";
-import { I18n, I18nFlavor } from "grammy_i18n";
+import { Bot, InlineKeyboard } from "grammy";
 import {
   type Conversation,
-  type ConversationFlavor,
   conversations,
   createConversation,
 } from "grammy_conversations";
-import { FileAdapter } from "grammy_storages_file";
+import { I18n } from "grammy_i18n";
+// import { Menu } from "grammy_menu";
 
 import { config } from "./config.ts";
+import { MyContext, mySession } from "./session.ts";
 import {
   Command,
   ConversationName,
   Locale,
+  // MenuName,
   Message,
-  WasMutedFor,
 } from "./type_hints.ts";
-
-interface Schedule {
-  name: string;
-  link: string;
-}
-
-interface ScheduleOptions {
-  schedule: Schedule;
-  notifyBefore?: Date;
-}
-
-interface SessionData {
-  __language_code?: Locale;
-  notifications: ScheduleOptions[];
-  mutedTill?: Date;
-  wasMutedFor: WasMutedFor;
-}
-
-type MyContext =
-  & Context
-  & ConversationFlavor
-  & I18nFlavor
-  & SessionFlavor<SessionData>;
-
-function initial(): SessionData {
-  return {
-    __language_code: Locale.En,
-    notifications: [],
-    mutedTill: undefined,
-    wasMutedFor: WasMutedFor.None,
-  };
-}
-
-function getSessionKey(ctx: Context): string | undefined {
-  return ctx.from?.id.toString();
-}
-
-const storage = new FileAdapter({ dirName: "sessions" });
-
-const mySession = session({
-  initial,
-  getSessionKey,
-  storage,
-});
 
 const i18n = new I18n<MyContext>({
   defaultLocale: Locale.En,
@@ -112,6 +68,46 @@ bot.command(
   Command.Start,
   async (ctx) => await ctx.conversation.enter(ConversationName.Greeting),
 );
+
+// function guessPreferredLanguage(_language_code: string): Locale {
+//   return Locale.En;
+// }
+
+// /** Returns the scholarship in rubles from the given GPA. */
+// function calculateScholarship(gpa: number): number {
+//   if (isNaN(gpa)) {
+//     throw new Error("The GPA mustn't be NaN");
+//   }
+//   if (!(2.0 <= gpa && gpa <= 5.0)) {
+//     throw new RangeError(`The GPA (${gpa}) is out of range [2.0, 5.0]`);
+//   }
+//
+//   const M_MIN = 3000;
+//   const M_MAX = 20_000;
+//
+//   let s = M_MIN + (M_MAX - M_MIN) * ((gpa - 2) / 3) ** 2.5;
+//   s = Math.floor(s / 100) * 100;
+//   return s;
+// }
+
+// bot.command(Command.Scholarship, async (ctx) => {
+//   await ctx.reply("Please, enter your grades or GPA.");
+// });
+
+// bot.on("message:text", async (ctx) => {
+//   const gpa = parseFloat(ctx.message.text);
+//
+//   try {
+//     const scholarship = calculateScholarship(gpa);
+//     await ctx.reply(scholarship.toString());
+//   } catch (e: unknown) {
+//     if (e instanceof RangeError) {
+//       ctx.reply(e.message);
+//     } else {
+//       ctx.reply("Invalid input!");
+//     }
+//   }
+// });
 
 bot.catch((e) => console.error(e));
 bot.start();

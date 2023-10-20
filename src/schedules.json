@@ -1,0 +1,540 @@
+[
+  {
+    "name": "Core Courses",
+    "contents": [
+      {
+        "name": "BS Year 1",
+        "contents": [
+          {
+            "name": "B23-DSAI-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-b23-dsai-01.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B23-DSAI-02",
+            "link": "https://api.innohassle.ru/events/v0/f23-b23-dsai-02.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B23-DSAI-03",
+            "link": "https://api.innohassle.ru/events/v0/f23-b23-dsai-03.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B23-DSAI-04",
+            "link": "https://api.innohassle.ru/events/v0/f23-b23-dsai-04.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B23-DSAI-05",
+            "link": "https://api.innohassle.ru/events/v0/f23-b23-dsai-05.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B23-ISE-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-b23-ise-01.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B23-ISE-02",
+            "link": "https://api.innohassle.ru/events/v0/f23-b23-ise-02.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B23-ISE-03",
+            "link": "https://api.innohassle.ru/events/v0/f23-b23-ise-03.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B23-ISE-04",
+            "link": "https://api.innohassle.ru/events/v0/f23-b23-ise-04.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B23-ISE-05",
+            "link": "https://api.innohassle.ru/events/v0/f23-b23-ise-05.ics?user_id=${user_id}&export_type=url"
+          }
+        ]
+      },
+      {
+        "name": "BS Year 2",
+        "contents": [
+          {
+            "name": "B22-CS-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-b22-cs-01.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B22-CS-02",
+            "link": "https://api.innohassle.ru/events/v0/f23-b22-cs-02.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B22-CS-03",
+            "link": "https://api.innohassle.ru/events/v0/f23-b22-cs-03.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B22-CS-04",
+            "link": "https://api.innohassle.ru/events/v0/f23-b22-cs-04.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B22-CS-05",
+            "link": "https://api.innohassle.ru/events/v0/f23-b22-cs-05.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B22-CS-06",
+            "link": "https://api.innohassle.ru/events/v0/f23-b22-cs-06.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B22-DSAI-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-b22-dsai-01.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B22-DSAI-02",
+            "link": "https://api.innohassle.ru/events/v0/f23-b22-dsai-02.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B22-DSAI-03",
+            "link": "https://api.innohassle.ru/events/v0/f23-b22-dsai-03.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B22-DSAI-04",
+            "link": "https://api.innohassle.ru/events/v0/f23-b22-dsai-04.ics?user_id=${user_id}&export_type=url"
+          }
+        ]
+      },
+      {
+        "name": "BS Year 3",
+        "contents": [
+          {
+            "name": "B21-AI",
+            "link": "https://api.innohassle.ru/events/v0/f23-b21-ai.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B21-CS",
+            "link": "https://api.innohassle.ru/events/v0/f23-b21-cs.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B21-DS-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-b21-ds-01.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B21-DS-02",
+            "link": "https://api.innohassle.ru/events/v0/f23-b21-ds-02.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B21-RO",
+            "link": "https://api.innohassle.ru/events/v0/f23-b21-ro.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B21-SD-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-b21-sd-01.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B21-SD-02",
+            "link": "https://api.innohassle.ru/events/v0/f23-b21-sd-02.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B21-SD-03",
+            "link": "https://api.innohassle.ru/events/v0/f23-b21-sd-03.ics?user_id=${user_id}&export_type=url"
+          }
+        ]
+      },
+      {
+        "name": "BS Year 4",
+        "contents": [
+          {
+            "name": "B20-AI-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-b20-ai-01.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B20-CS-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-b20-cs-01.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B20-DS-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-b20-ds-01.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B20-RO-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-b20-ro-01.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B20-SD-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-b20-sd-01.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "B20-SD-02",
+            "link": "https://api.innohassle.ru/events/v0/f23-b20-sd-02.ics?user_id=${user_id}&export_type=url"
+          }
+        ]
+      },
+      {
+        "name": "MS Year 1",
+        "contents": [
+          {
+            "name": "M22-DS-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-m22-ds-01.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "M22-RO-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-m22-ro-01.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "M22-SE-02",
+            "link": "https://api.innohassle.ru/events/v0/f23-m22-se-02.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "M22-TE-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-m22-te-01.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "M23-DS-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-m23-ds-01.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "M23-RO-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-m23-ro-01.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "M23-SE-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-m23-se-01.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "M23-SE-02",
+            "link": "https://api.innohassle.ru/events/v0/f23-m23-se-02.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "M23-TE-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-m23-te-01.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "M22-SE-01",
+            "link": "https://api.innohassle.ru/events/v0/f23-m22-se-01.ics?user_id=${user_id}&export_type=url"
+          }
+        ]
+      },
+      {
+        "name": "MS Year 2",
+        "contents": [
+          {
+            "name": "M21-DS",
+            "link": "https://api.innohassle.ru/events/v0/f23-m21-ds.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "M22-DS",
+            "link": "https://api.innohassle.ru/events/v0/f23-m22-ds.ics?user_id=${user_id}&export_type=url"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Electives",
+    "contents": [
+      {
+        "name": "BS Tech",
+        "contents": [
+          {
+            "name": "OMML",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-omml.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "BDLD",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-bdld.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "SMP",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-smp.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "PGA",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-pga.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "IHD",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-ihd.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "IQC",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-iqc.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "GAI",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-gai.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "PHL",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-phl.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "PMBA",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-pmba.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "PMBA Group 1",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-pmba-group-1.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "PMBA Group 2",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-pmba-group-2.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "GDU",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-gdu.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "SPDA",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-spda.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "ASEM",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-asem.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "IDS",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-ids.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "DCD",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-dcd.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "CGGD",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-cggd.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "RESU",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-resu.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "EPJA",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-epja.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "MCD",
+            "link": "https://api.innohassle.ru/events/v0/f23-bs-tech-mcd.ics?user_id=${user_id}&export_type=url"
+          }
+        ]
+      },
+      {
+        "name": "MS Tech / Hum",
+        "contents": [
+          {
+            "name": "ACV",
+            "link": "https://api.innohassle.ru/events/v0/f23-ms-acv.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "FDS",
+            "link": "https://api.innohassle.ru/events/v0/f23-ms-fds.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "CAW",
+            "link": "https://api.innohassle.ru/events/v0/f23-ms-caw.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "DSM",
+            "link": "https://api.innohassle.ru/events/v0/f23-ms-dsm.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "SM",
+            "link": "https://api.innohassle.ru/events/v0/f23-ms-sm.ics?user_id=${user_id}&export_type=url"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Sports",
+    "contents": [
+      {
+        "name": "Badminton - Advanced",
+        "link": "https://api.innohassle.ru/events/v0/f23-badminton-advanced.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Badminton - Beginners",
+        "link": "https://api.innohassle.ru/events/v0/f23-badminton-beginners.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Boxing",
+        "link": "https://api.innohassle.ru/events/v0/f23-boxing.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "CrossFit",
+        "link": "https://api.innohassle.ru/events/v0/f23-crossfit.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "CrossFit - Women",
+        "link": "https://api.innohassle.ru/events/v0/f23-crossfit-women.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Follow the Bars - Running",
+        "link": "https://api.innohassle.ru/events/v0/f23-follow-the-bars-running.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Healthy back",
+        "link": "https://api.innohassle.ru/events/v0/f23-healthy-back.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Innotyaga",
+        "link": "https://api.innohassle.ru/events/v0/f23-innotyaga.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Karate",
+        "link": "https://api.innohassle.ru/events/v0/f23-karate.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Mobility",
+        "link": "https://api.innohassle.ru/events/v0/f23-mobility.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Park Run - 5 Verst",
+        "link": "https://api.innohassle.ru/events/v0/f23-park-run-5-verst.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "RAGE - Knights",
+        "link": "https://api.innohassle.ru/events/v0/f23-rage-knights.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Sambo",
+        "link": "https://api.innohassle.ru/events/v0/f23-sambo.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Street Dance",
+        "link": "https://api.innohassle.ru/events/v0/f23-street-dance.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Stretching",
+        "link": "https://api.innohassle.ru/events/v0/f23-stretching.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Swimming",
+        "link": "https://api.innohassle.ru/events/v0/f23-swimming.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Animal flow",
+        "link": "https://api.innohassle.ru/events/v0/f23-animal-flow.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Basic strength training",
+        "link": "https://api.innohassle.ru/events/v0/f23-basic-strength-training.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Basketball",
+        "link": "https://api.innohassle.ru/events/v0/f23-basketball.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Cricket",
+        "link": "https://api.innohassle.ru/events/v0/f23-cricket.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Football",
+        "link": "https://api.innohassle.ru/events/v0/f23-football.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Functional LSD",
+        "link": "https://api.innohassle.ru/events/v0/f23-functional-lsd.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Functional Training",
+        "link": "https://api.innohassle.ru/events/v0/f23-functional-training.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Mixed sports",
+        "link": "https://api.innohassle.ru/events/v0/f23-mixed-sports.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Power Up",
+        "link": "https://api.innohassle.ru/events/v0/f23-power-up.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "RAGE",
+        "link": "https://api.innohassle.ru/events/v0/f23-rage.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Social Dance - Advanced",
+        "link": "https://api.innohassle.ru/events/v0/f23-social-dance-advanced.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Social Dance - Junior|Middle",
+        "link": "https://api.innohassle.ru/events/v0/f23-social-dance-junior-middle.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Table tennis - Advanced",
+        "link": "https://api.innohassle.ru/events/v0/f23-table-tennis-advanced.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Yoga - Strength",
+        "link": "https://api.innohassle.ru/events/v0/f23-yoga-strength.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Yoga - Stretching",
+        "link": "https://api.innohassle.ru/events/v0/f23-yoga-stretching.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Table tennis - Beginners",
+        "link": "https://api.innohassle.ru/events/v0/f23-table-tennis-beginners.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Tennis",
+        "link": "https://api.innohassle.ru/events/v0/f23-tennis.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Tricking club",
+        "link": "https://api.innohassle.ru/events/v0/f23-tricking-club.ics?user_id=${user_id}&export_type=url"
+      },
+      {
+        "name": "Volleyball",
+        "link": "https://api.innohassle.ru/events/v0/f23-volleyball.ics?user_id=${user_id}&export_type=url"
+      }
+    ]
+  },
+  {
+    "name": "Cleaning",
+    "contents": [
+      {
+        "name": "Linen Change",
+        "contents": [
+          {
+            "name": "Linen Change: 1 building",
+            "link": "https://api.innohassle.ru/events/v0/linen-change-1-building.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "Linen Change: 2 building",
+            "link": "https://api.innohassle.ru/events/v0/linen-change-2-building.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "Linen Change: 3 building",
+            "link": "https://api.innohassle.ru/events/v0/linen-change-3-building.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "Linen Change: 4 building",
+            "link": "https://api.innohassle.ru/events/v0/linen-change-4-building.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "Linen Change: 5 building",
+            "link": "https://api.innohassle.ru/events/v0/linen-change-5-building.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "Linen Change: 6 building",
+            "link": "https://api.innohassle.ru/events/v0/linen-change-6-building.ics?user_id=${user_id}&export_type=url"
+          }
+        ]
+      },
+      {
+        "name": "Room Cleaning",
+        "contents": [
+          {
+            "name": "Cleaning: 1 building 1-4 floor",
+            "link": "https://api.innohassle.ru/events/v0/cleaning-1-building-1-4-floor.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "Cleaning: 2 building 1-2 floor",
+            "link": "https://api.innohassle.ru/events/v0/cleaning-2-building-1-2-floor.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "Cleaning: 2 building 3-4 floor",
+            "link": "https://api.innohassle.ru/events/v0/cleaning-2-building-3-4-floor.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "Cleaning: 3 building 1-2 floor",
+            "link": "https://api.innohassle.ru/events/v0/cleaning-3-building-1-2-floor.ics?user_id=${user_id}&export_type=url"
+          },
+          {
+            "name": "Cleaning: 3 building 3-4 floor",
+            "link": "https://api.innohassle.ru/events/v0/cleaning-3-building-3-4-floor.ics?user_id=${user_id}&export_type=url"
+          }
+        ]
+      }
+    ]
+  }
+]
