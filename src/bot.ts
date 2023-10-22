@@ -1,6 +1,7 @@
 import { Bot, Context, InlineKeyboard, session, SessionFlavor } from "grammy";
 import { I18n, I18nFlavor } from "grammy_i18n";
 import { FileAdapter } from "grammy_storages_file";
+import { z } from "zod";
 
 import { config } from "./config.ts";
 import { Button, Command, Locale, Message, WasMutedFor } from "./type_hints.ts";
@@ -113,6 +114,26 @@ bot.callbackQuery(Button.StartHaveAccountNo, async (ctx) => {
   });
 });
 
+bot.callbackQuery(Button.StartCreateAccountYes, async (ctx) => {
+  await ctx.deleteMessage();
+
+  const inlineKeyboard = new InlineKeyboard();
+
+  await ctx.reply(ctx.t(), {
+    reply_markup: inlineKeyboard,
+  });
+});
+
+bot.callbackQuery(Button.StartCreateAccountNo, async (ctx) => {
+  await ctx.deleteMessage();
+
+  const inlineKeyboard = new InlineKeyboard();
+
+  await ctx.reply(ctx.t(), {
+    reply_markup: inlineKeyboard,
+  });
+});
+
 async function mainMenu(ctx: MyContext) {
   await ctx.deleteMessage();
 
@@ -144,3 +165,31 @@ bot.callbackQuery(Button.MainMenuSettings, async (ctx) => {
 
 bot.catch((e) => console.error(e));
 bot.start();
+
+const Schedules = z.object({
+  groups: z.array(
+    z.object({
+      id: z.number(),
+      alias: z.string(),
+      path: z.string(),
+      name: z.string(),
+      description: z.string(),
+      tags: z.array(
+        z.object({
+          id: z.number(),
+          alias: z.string(),
+          type: z.string(),
+          name: z.string(),
+        }),
+      ),
+    }),
+  ),
+});
+
+// type Schedules = z.infer<typeof Schedules>;
+
+const URL = "https://api.innohassle.ru/events/v0/event-groups/";
+await fetch(URL)
+  .then(async (schedules) => await schedules.json())
+  .then(async (schedules) => await Schedules.parseAsync(schedules))
+  .then((schedules) => console.log(schedules.groups[0]));
