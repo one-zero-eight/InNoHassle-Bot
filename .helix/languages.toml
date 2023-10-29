@@ -18,6 +18,7 @@ formatter = { command = "deno", args = ["fmt", "-", "--ext", "json"] }
 
 [[language]]
 name = "markdown"
+roots = ["deno.jsonc"]
 language-servers = ["deno"]
 formatter = { command = "deno", args = ["fmt", "-", "--ext", "md"] }
 
