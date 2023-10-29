@@ -3,7 +3,7 @@ import { I18n, I18nFlavor } from "grammy_i18n";
 import { FileAdapter } from "grammy_storages_file";
 
 import { config } from "./config.ts";
-import { schedules } from "./schedules.ts";
+import { getSchedules } from "./schedules.ts";
 import { Button, Command, Locale, Message, WasMutedFor } from "./type_hints.ts";
 
 interface Schedule {
@@ -158,6 +158,8 @@ bot.callbackQuery(Button.MainMenuSettings, async (ctx) => {
 });
 
 bot.catch((e) => console.error(e));
-bot.start();
+// bot.start();
 
-console.log(schedules);
+setInterval(async function () {
+  const schedules = await getSchedules();
+}, 60_000);

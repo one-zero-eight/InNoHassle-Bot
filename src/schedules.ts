@@ -1,10 +1,12 @@
 import { z } from "zod";
 
-const Schedules = z.object({
+const ZSchedules = z.object({
   groups: z.array(
     z.object({
       id: z.number(),
       alias: z.string(),
+      updated_at: z.string().transform((str) => new Date(str)),
+      created_at: z.string().transform((str) => new Date(str)),
       path: z.string(),
       name: z.string(),
       description: z.string(),
@@ -19,8 +21,16 @@ const Schedules = z.object({
     }),
   ),
 });
+type Schedules = z.infer<typeof ZSchedules>;
 
-const URL = "https://api.innohassle.ru/events/v0/event-groups/";
-export const schedules = await fetch(URL)
-  .then(async (s) => await s.json())
-  .then(async (s) => await Schedules.parseAsync(s));
+const API_EVENT_GROUPS = new URL(
+  "https://api.innohassle.ru/events/v0/event-groups/",
+);
+
+export async function getSchedules(
+  url: URL = API_EVENT_GROUPS,
+): Promise<Schedules> {
+  return await fetch(url)
+    .then(async (s) => await s.json())
+    .then(async (s) => await ZSchedules.parseAsync(s));
+}
