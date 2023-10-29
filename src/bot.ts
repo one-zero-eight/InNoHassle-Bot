@@ -4,7 +4,8 @@ import { I18n, I18nFlavor } from "grammy_i18n";
 import { FileAdapter } from "grammy_storages_file";
 
 import { config } from "./config.ts";
-import * as schedules from "./schedules.ts";
+// import * as schedules from "./schedules.ts";
+import * as scholarship from "./scholarship.ts";
 import { Button, Command, Locale, Message, WasMutedFor } from "./type_hints.ts";
 
 interface Schedule {
@@ -17,8 +18,15 @@ interface ScheduleOptions {
   notifyBefore?: Date;
 }
 
+enum State {
+  Start,
+  Scholarship,
+  Other,
+}
+
 interface SessionData {
   __language_code?: Locale;
+  state: State;
   innohassleId?: number;
   settingsSync: boolean;
   notifications: ScheduleOptions[];
@@ -31,6 +39,7 @@ type MyContext = Context & I18nFlavor & SessionFlavor<SessionData>;
 function initial(): SessionData {
   return {
     __language_code: Locale.En,
+    state: State.Start,
     innohassleId: undefined,
     settingsSync: false,
     notifications: [],
@@ -59,8 +68,14 @@ bot.use(mySession);
 bot.use(i18n);
 
 bot.command(Command.Start, async (ctx) => {
+  if (ctx.session.state !== State.Start) {
+    ctx.reply("Warning");
+    return;
+  }
+
   const inlineKeyboard = new InlineKeyboard()
-    .text(ctx.t(Button.StartYes), Button.StartYes);
+    .text(ctx.t(Button.StartYes), Button.StartYes)
+    .text("Quick Start", "quick-start");
 
   await ctx.reply(ctx.t(Message.Start), {
     disable_web_page_preview: true,
@@ -132,6 +147,8 @@ bot.callbackQuery(Button.StartCreateAccountNo, async (ctx) => {
 async function mainMenu(ctx: MyContext) {
   await ctx.deleteMessage();
 
+  ctx.session.state = State.Other;
+
   const inlineKeyboard = new InlineKeyboard()
     .text(ctx.t(Button.MainMenuSchedules), Button.MainMenuSchedules).row()
     .text(ctx.t(Button.MainMenuScholarship), Button.MainMenuScholarship).row()
@@ -143,6 +160,20 @@ async function mainMenu(ctx: MyContext) {
   });
 }
 
+bot.callbackQuery(Button.MainMenuScholarship, async (ctx) => {
+  await ctx.deleteMessage();
+
+  ctx.session.state = State.Scholarship;
+
+  const inlineKeyboard = new InlineKeyboard()
+    .text(ctx.t(Button.BackToMainMenu), Button.BackToMainMenu);
+
+  await ctx.reply("Enter your grades or GPA.", {
+    reply_markup: inlineKeyboard,
+  });
+});
+
+bot.callbackQuery("quick-start", mainMenu);
 bot.callbackQuery(Button.StartSchedulesYes, mainMenu);
 bot.callbackQuery(Button.StartSchedulesNo, mainMenu);
 bot.callbackQuery(Button.BackToMainMenu, mainMenu);
@@ -159,8 +190,11 @@ bot.callbackQuery(Button.MainMenuSettings, async (ctx) => {
 });
 
 bot.catch((e) => console.error(e));
-// bot.start();
+bot.start();
 
-setInterval(async function () {
-  const newSchedules = await schedules.getSchedules();
-}, 60_000);
+const gpa = await scholarship.parseGpa("\n2  a  A f\n  5  ");
+console.log(gpa);
+console.log(scholarship.calculate(gpa));
+// setInterval(async function () {
+//   const newSchedules = await schedules.getSchedules();
+// }, 60_000);
