@@ -1,9 +1,10 @@
-import { Bot, Context, InlineKeyboard, session, SessionFlavor } from "grammy";
+import * as grammy from "grammy";
+import { Bot, Context, InlineKeyboard, SessionFlavor } from "grammy";
 import { I18n, I18nFlavor } from "grammy_i18n";
 import { FileAdapter } from "grammy_storages_file";
 
 import { config } from "./config.ts";
-import { getSchedules } from "./schedules.ts";
+import * as schedules from "./schedules.ts";
 import { Button, Command, Locale, Message, WasMutedFor } from "./type_hints.ts";
 
 interface Schedule {
@@ -44,7 +45,7 @@ function getSessionKey(ctx: Context): string | undefined {
 
 const storage = new FileAdapter(/* { dirName: "sessions" } */);
 
-const mySession = session({ initial, getSessionKey, storage });
+const mySession = grammy.session({ initial, getSessionKey, storage });
 
 // @ts-expect-error: GrammY bug.
 const i18n = new I18n<MyContext>({
@@ -161,5 +162,5 @@ bot.catch((e) => console.error(e));
 // bot.start();
 
 setInterval(async function () {
-  const schedules = await getSchedules();
+  const newSchedules = await schedules.getSchedules();
 }, 60_000);
