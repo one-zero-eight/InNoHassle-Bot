@@ -27,10 +27,9 @@ const API_EVENT_GROUPS = new URL(
   "https://api.innohassle.ru/events/v0/event-groups/",
 );
 
-export async function get(
-  url: URL = API_EVENT_GROUPS,
-): Promise<Schedules> {
-  return await fetch(url)
-    .then(async (s) => await s.json())
-    .then(async (s) => await ZSchedules.parseAsync(s));
+export async function get(url: URL = API_EVENT_GROUPS): Promise<Schedules> {
+  const response = await fetch(url);
+  const data = await response.json();
+  const schedules = await ZSchedules.parseAsync(data);
+  return schedules;
 }
