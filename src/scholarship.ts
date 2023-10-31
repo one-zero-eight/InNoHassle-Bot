@@ -11,7 +11,24 @@ export async function parseGpa(str: string): Promise<number> {
   );
 
   const gradesInput = str.trim().toUpperCase().split(/\s+/);
-  const grades = await ZGrades.parseAsync(gradesInput);
+
+  let grades: number[];
+
+  try {
+    grades = await ZGrades.parseAsync(gradesInput);
+  } catch (e) {
+    if (gradesInput.length !== 1) {
+      throw e;
+    }
+
+    const gpa = parseFloat(gradesInput[0].replace(",", "."));
+
+    if (!(2 <= gpa && gpa <= 5)) {
+      throw e;
+    }
+
+    return gpa;
+  }
 
   const sum = grades.reduce((a, b) => a + b, 0);
 
@@ -20,9 +37,6 @@ export async function parseGpa(str: string): Promise<number> {
 }
 
 export function calculate(gpa: number): number {
-  if (isNaN(gpa)) {
-    throw new Error("`gpa` mustn't be `NaN`");
-  }
   if (!(2.0 <= gpa && gpa <= 5.0)) {
     throw new RangeError(`\`gpa\` (\`${gpa}\`) is out of range [2.0, 5.0]`);
   }
