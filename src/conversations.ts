@@ -4,7 +4,7 @@ import { composer as start } from "@/conversations/start.ts";
 import { composer as settings } from "@/conversations/settings.ts";
 import { composer as scholarship } from "@/conversations/scholarship.ts";
 import type { MyContext } from "@/bot.ts";
-import { State } from "@/bot.ts";
+import { Conversation } from "@/bot.ts";
 // import * as eventGroups from "@/tmp/event_groups.ts";
 // import * as scholarship from "@/tmp/scholarship.ts";
 import { Button, Message } from "@/labels.ts";
@@ -18,7 +18,7 @@ composer.use(scholarship);
 async function mainMenu(ctx: MyContext) {
   await ctx.deleteMessage();
 
-  ctx.session.state = State.Other;
+  ctx.session.state = { conversation: Conversation.MainMenu };
 
   const inlineKeyboard = new InlineKeyboard()
     .text(ctx.t(Button.MainMenuSchedules), Button.MainMenuSchedules).row()
@@ -40,3 +40,24 @@ composer.callbackQuery(Button.BackToMainMenu, mainMenu);
 //   const newEventGroups = await eventGroups.get();
 //   console.log(newEventGroups);
 // }, 60_000);
+
+composer.on("message", async (ctx) => {
+  switch (ctx.session.state.conversation) {
+    case Conversation.Start: {
+      break;
+    }
+    case Conversation.Scholarship: {
+      break;
+    }
+    case Conversation.Settings: {
+      break;
+    }
+    case Conversation.Support: {
+      break;
+    }
+    default: {
+      await mainMenu(ctx);
+      break;
+    }
+  }
+});

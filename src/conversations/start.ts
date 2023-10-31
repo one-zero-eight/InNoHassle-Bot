@@ -1,13 +1,13 @@
 import { Composer, InlineKeyboard } from "grammy";
 
 import type { MyContext } from "@/bot.ts";
-import { State } from "@/bot.ts";
+import { Conversation } from "@/bot.ts";
 import { Button, Command, Message } from "@/labels.ts";
 
 export const composer = new Composer<MyContext>();
 
 composer.command(Command.Start, async (ctx) => {
-  if (ctx.session.state !== State.Start) {
+  if (ctx.session.state.conversation !== Conversation.Start) {
     ctx.reply("Warning");
     return;
   }

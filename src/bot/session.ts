@@ -2,14 +2,23 @@ import * as grammy from "grammy";
 import type { Context } from "grammy";
 import { FileAdapter } from "grammy-storages-file";
 
+import { MyContext } from "@/bot/context.ts";
+
 export const enum Locale {
   En = "en",
 }
 
-export const enum State {
+export const enum Conversation {
   Start,
+  MainMenu,
   Scholarship,
-  Other,
+  Settings,
+  Support,
+}
+
+interface State {
+  conversation: Conversation;
+  context?: MyContext;
 }
 
 const enum WasMutedFor {
@@ -43,7 +52,7 @@ export interface SessionData {
 function initial(): SessionData {
   return {
     __language_code: Locale.En,
-    state: State.Start,
+    state: { conversation: Conversation.Start },
     innohassleId: undefined,
     settingsSync: false,
     notifications: [],
