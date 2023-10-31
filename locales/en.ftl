@@ -40,3 +40,5 @@ start-schedules = Would you like to get notifications on some schedules?
 default = What are we up to now?
 
 settings = [settings Settings]
+
+scholarship = [scholarship Scholarship]

@@ -1,25 +1,3 @@
-/** Telegram bot commands starting with a `/` symbol. */
-export const enum Command {
-  Start = "start",
-  Scholarship = "scholarship",
-}
-
-/** GrammY conversation function names. */
-export const enum ConversationName {
-  Greeting = "greeting",
-}
-
-/** Messages from `/locales/*.ftl`. */
-export const enum Message {
-  Start = "start",
-  StartHaveAccount = "start-have-account",
-  StartConnectTelegram = "start-connect-telegram",
-  StartCreateAccount = "start-create-account",
-  StartSchedules = "start-schedules",
-  Default = "default",
-  Settings = "settings",
-}
-
 /** Buttons from `/locales/*.ftl`. */
 export const enum Button {
   StartYes = "button-start-yes",
@@ -41,16 +19,20 @@ export const enum Button {
   MainMenuSchedules = "button-main-menu-schedules",
 }
 
-/** Telegram language codes (ISO 639-1). */
-export const enum Locale {
-  En = "en",
+/** Telegram bot commands starting with a `/` symbol. */
+export const enum Command {
+  Start = "start",
+  Scholarship = "scholarship",
 }
 
-/** A user can be muted if they spam support. */
-export const enum WasMutedFor {
-  None,
-  Day,
-  Week,
-  Month,
-  Ever,
+/** Messages from `/locales/*.ftl`. */
+export const enum Message {
+  Start = "start",
+  StartHaveAccount = "start-have-account",
+  StartConnectTelegram = "start-connect-telegram",
+  StartCreateAccount = "start-create-account",
+  StartSchedules = "start-schedules",
+  Default = "default",
+  Settings = "settings",
+  Scholarship = "scholarship",
 }
