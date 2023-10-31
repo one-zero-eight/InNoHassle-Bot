@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const ZSchedules = z.object({
+const ZEventGroups = z.object({
   groups: z.array(
     z.object({
       id: z.number(),
@@ -21,15 +21,15 @@ const ZSchedules = z.object({
     }),
   ),
 });
-type Schedules = z.infer<typeof ZSchedules>;
+type EventGroups = z.infer<typeof ZEventGroups>;
 
 const API_EVENT_GROUPS = new URL(
   "https://api.innohassle.ru/events/v0/event-groups/",
 );
 
-export async function get(url: URL = API_EVENT_GROUPS): Promise<Schedules> {
+export async function get(url: URL = API_EVENT_GROUPS): Promise<EventGroups> {
   const response = await fetch(url);
   const data = await response.json();
-  const schedules = await ZSchedules.parseAsync(data);
-  return schedules;
+  const eventGroups = await ZEventGroups.parseAsync(data);
+  return eventGroups;
 }
