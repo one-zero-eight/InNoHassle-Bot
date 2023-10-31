@@ -6,6 +6,12 @@ export const enum Locale {
   En = "en",
 }
 
+export const enum State {
+  Start,
+  Scholarship,
+  Other,
+}
+
 const enum WasMutedFor {
   None,
   Day,
@@ -22,12 +28,6 @@ interface Schedule {
 interface ScheduleOptions {
   schedule: Schedule;
   notifyBefore?: Date;
-}
-
-export enum State {
-  Start,
-  Scholarship,
-  Other,
 }
 
 export interface SessionData {
