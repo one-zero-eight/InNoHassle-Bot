@@ -1,5 +1,16 @@
 {
   "version": "3",
+  "packages": {
+    "specifiers": {
+      "npm:ical.js": "npm:ical.js@1.5.0"
+    },
+    "npm": {
+      "ical.js@1.5.0": {
+        "integrity": "sha512-7ZxMkogUkkaCx810yp0ZGKvq1ZpRgJeornPttpoxe6nYZ3NLesZe1wWMXDdwTkj/b5NtXT+Y16Aakph/ao98ZQ==",
+        "dependencies": {}
+      }
+    }
+  },
   "redirects": {
     "https://lib.deno.dev/x/grammy@1.x/mod.ts": "https://deno.land/x/grammy@v1.19.0/mod.ts"
   },
