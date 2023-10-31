@@ -1,10 +1,13 @@
 import { Bot } from "grammy";
 
-import { MyContext } from "@/bot/context.ts";
+import type { MyContext } from "@/bot/context.ts";
 import { i18n } from "@/bot/i18n.ts";
 import { mySession } from "@/bot/session.ts";
 import { config } from "@/config.ts";
 import { composer as conversations } from "@/conversations.ts";
+
+export type { MyContext } from "@/bot/context.ts";
+export { State } from "@/bot/session.ts";
 
 export const bot = new Bot<MyContext>(config.BOT_TOKEN);
 

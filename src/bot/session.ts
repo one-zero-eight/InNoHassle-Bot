@@ -1,5 +1,5 @@
 import * as grammy from "grammy";
-import { Context } from "grammy";
+import type { Context } from "grammy";
 import { FileAdapter } from "grammy-storages-file";
 
 export const enum Locale {

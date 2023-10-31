@@ -3,10 +3,10 @@ import { Composer, InlineKeyboard } from "grammy";
 import { composer as start } from "@/conversations/start.ts";
 import { composer as settings } from "@/conversations/settings.ts";
 import { composer as scholarship } from "@/conversations/scholarship.ts";
-import { MyContext } from "@/bot/context.ts";
-import { State } from "@/bot/session.ts";
-// import * as eventGroups from "@/event_groups.ts";
-// import * as scholarship from "@/scholarship.ts";
+import type { MyContext } from "@/bot.ts";
+import { State } from "@/bot.ts";
+// import * as eventGroups from "@/tmp/event_groups.ts";
+// import * as scholarship from "@/tmp/scholarship.ts";
 import { Button, Message } from "@/labels.ts";
 
 export const composer = new Composer<MyContext>();
