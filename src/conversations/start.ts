@@ -63,6 +63,37 @@ composer.callbackQuery(Button.StartHaveAccountNo, async (ctx) => {
   });
 });
 
+composer.callbackQuery(Button.StartConnectTelegramYes, async (ctx) => {
+  await ctx.deleteMessage();
+
+  // const inlineKeyboard = new InlineKeyboard()
+  //   .text(ctx.t(Button.), Button.)
+
+  // XXX:
+  await ctx.reply(
+    `Okay, master, let's kill da hoe!\n` +
+      `<code>${ctx.from.id}</code>`,
+    {
+      parse_mode: "HTML",
+      // reply_markup: inlineKeyboard,
+    },
+  );
+});
+
+// TODO:
+composer.callbackQuery(Button.StartConnectTelegramNo, async (ctx) => {
+  // await ctx.deleteMessage();
+
+  // const inlineKeyboard = new InlineKeyboard()
+  //   .text(ctx.t(Button.), Button.)
+
+  // await ctx.reply(ctx.t(Message.), {
+  //   parse_mode: "HTML",
+  //   reply_markup: inlineKeyboard,
+  // });
+});
+
+// TODO:
 composer.callbackQuery(Button.StartCreateAccountYes, async (ctx) => {
   await ctx.deleteMessage();
 
@@ -73,6 +104,7 @@ composer.callbackQuery(Button.StartCreateAccountYes, async (ctx) => {
   });
 });
 
+// TODO:
 composer.callbackQuery(Button.StartCreateAccountNo, async (ctx) => {
   await ctx.deleteMessage();
 
