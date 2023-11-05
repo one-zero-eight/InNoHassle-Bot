@@ -9,6 +9,7 @@ button-start-schedules-yes = ✅ Sure thing!
 button-start-schedules-no = ➡️ Maybe, later…
 button-main-menu-settings = ⚙️ Settings
 button-main-menu-schedules = 📆 Schedules
+button-main-menu-information = 📖 Information
 button-main-menu-scholarship = 💸 Scholarship
 button-main-menu-support = 💬 Support
 button-back-to-main-menu = ⬅️ Back
@@ -39,6 +40,12 @@ start-schedules = Would you like to get notifications on some schedules?
 
 default = What are we up to now?
 
-settings = [settings Settings]
+schedules = [schedules Schedules]
 
 scholarship = [scholarship Scholarship]
+
+information = [information Information]
+
+settings = [settings Settings]
+
+support = [support Support]

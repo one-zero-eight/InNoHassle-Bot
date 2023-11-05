@@ -1,8 +1,11 @@
 import { Composer, InlineKeyboard } from "grammy";
 
 import { composer as start } from "@/conversations/start.ts";
+import { composer as schedules } from "@/conversations/schedules.ts";
+import { composer as information } from "@/conversations/information.ts";
 import { composer as settings } from "@/conversations/settings.ts";
 import { composer as scholarship } from "@/conversations/scholarship.ts";
+import { composer as support } from "@/conversations/support.ts";
 import type { MyContext } from "@/bot.ts";
 import { Conversation } from "@/bot.ts";
 // import * as eventGroups from "@/tmp/event_groups.ts";
@@ -12,8 +15,11 @@ import { Button, Message } from "@/labels.ts";
 export const composer = new Composer<MyContext>();
 
 composer.use(start);
+composer.use(schedules);
 composer.use(settings);
+composer.use(information);
 composer.use(scholarship);
+composer.use(support);
 
 async function mainMenu(ctx: MyContext) {
   await ctx.deleteMessage();
@@ -23,6 +29,7 @@ async function mainMenu(ctx: MyContext) {
   const inlineKeyboard = new InlineKeyboard()
     .text(ctx.t(Button.MainMenuSchedules), Button.MainMenuSchedules).row()
     .text(ctx.t(Button.MainMenuScholarship), Button.MainMenuScholarship).row()
+    .text(ctx.t(Button.MainMenuInformation), Button.MainMenuInformation).row()
     .text(ctx.t(Button.MainMenuSettings), Button.MainMenuSettings).row()
     .text(ctx.t(Button.MainMenuSupport), Button.MainMenuSupport);
 
@@ -47,6 +54,9 @@ composer.on("message", async (ctx) => {
       break;
     }
     case Conversation.Scholarship: {
+      break;
+    }
+    case Conversation.Information: {
       break;
     }
     case Conversation.Settings: {

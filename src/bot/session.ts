@@ -12,6 +12,7 @@ export const enum Conversation {
   Start,
   MainMenu,
   Scholarship,
+  Information,
   Settings,
   Support,
 }

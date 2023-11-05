@@ -15,6 +15,7 @@ export const enum Button {
   StartSchedulesNo = "button-start-schedules-no",
   MainMenuSupport = "button-main-menu-support",
   MainMenuScholarship = "button-main-menu-scholarship",
+  MainMenuInformation = "button-main-menu-information",
   MainMenuSettings = "button-main-menu-settings",
   MainMenuSchedules = "button-main-menu-schedules",
 }
@@ -33,6 +34,9 @@ export const enum Message {
   StartCreateAccount = "start-create-account",
   StartSchedules = "start-schedules",
   Default = "default",
+  Schedules = "schedules",
   Settings = "settings",
+  Information = "information",
   Scholarship = "scholarship",
+  Support = "support",
 }
