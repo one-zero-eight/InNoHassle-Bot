@@ -32,7 +32,7 @@ start-have-account = Do you have an <a href="https://innohassle.ru/">InNoHassle<
 start-connect-telegram = Perfect! Then would you like to connect your Telegram account to InNoHassle?
 
 start-create-account =
-    Oh, I see. Then I highly recommend you creating one, so you can keep your data synced with the website.
+    Oh, I see. Then I highly recommend creating one, so you can keep your data synced with the website.
 
     To create an account, proceed to <a href="https://innohassle.ru/">innohassle.ru</a> and press “<i>Sign in</i>”.
 
