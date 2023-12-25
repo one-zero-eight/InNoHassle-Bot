@@ -2,43 +2,12 @@ import * as grammy from "grammy";
 import type { Context } from "grammy";
 import { FileAdapter } from "grammy-storages-file";
 
-import { MyContext } from "@/bot/context.ts";
+import { Conversation, State } from "@/bot/session/state.ts";
+import { WasMutedFor } from "@/bot/session/was_muted_for.ts";
+import { Locale } from "@/bot/session/locales.ts";
+import { ScheduleOptions } from "@/bot/session/schedules.ts";
 
-export const enum Locale {
-  En = "en",
-}
-
-export const enum Conversation {
-  Start,
-  MainMenu,
-  Scholarship,
-  Information,
-  Settings,
-  Support,
-}
-
-interface State {
-  conversation: Conversation;
-  context?: MyContext;
-}
-
-const enum WasMutedFor {
-  None,
-  Day,
-  Week,
-  Month,
-  Ever,
-}
-
-interface Schedule {
-  name: string;
-  link: string;
-}
-
-interface ScheduleOptions {
-  schedule: Schedule;
-  notifyBefore?: Date;
-}
+export { Conversation, Locale };
 
 export interface SessionData {
   __language_code?: Locale;
@@ -47,7 +16,7 @@ export interface SessionData {
   settingsSync: boolean;
   notifications: ScheduleOptions[];
   mutedTill?: Date;
-  wasMutedFor: WasMutedFor;
+  wasMutedFor?: WasMutedFor;
 }
 
 function initial(): SessionData {
@@ -58,7 +27,7 @@ function initial(): SessionData {
     settingsSync: false,
     notifications: [],
     mutedTill: undefined,
-    wasMutedFor: WasMutedFor.None,
+    wasMutedFor: undefined,
   };
 }
 
