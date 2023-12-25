@@ -2,6 +2,7 @@ import * as grammy from "grammy";
 import type { Context } from "grammy";
 import { FileAdapter } from "grammy-storages-file";
 
+import { Course } from "@/bot/session/course.ts";
 import { Conversation, State } from "@/bot/session/state.ts";
 import { WasMutedFor } from "@/bot/session/was_muted_for.ts";
 import { Locale } from "@/bot/session/locales.ts";
@@ -13,6 +14,7 @@ export interface SessionData {
   __language_code?: Locale;
   state: State;
   innohassleId?: number;
+  course?: Course;
   settingsSync: boolean;
   notifications: ScheduleOptions[];
   mutedTill?: Date;
@@ -24,6 +26,7 @@ function initial(): SessionData {
     __language_code: Locale.En,
     state: { conversation: Conversation.Start },
     innohassleId: undefined,
+    course: undefined,
     settingsSync: false,
     notifications: [],
     mutedTill: undefined,
