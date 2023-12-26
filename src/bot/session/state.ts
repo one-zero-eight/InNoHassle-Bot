@@ -1,4 +1,4 @@
-import { MyContext } from "@/bot/context.ts";
+import type { MyContext } from "@/bot/context.ts";
 
 export const enum Conversation {
   Start = "start",
