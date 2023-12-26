@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+import { Course, Year } from "@/bot.ts";
+
 export async function parseGpa(str: string): Promise<number> {
   const ZGrades = z.array(
     z.union([

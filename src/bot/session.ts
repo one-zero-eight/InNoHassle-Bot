@@ -1,14 +1,16 @@
 import * as grammy from "grammy";
-import type { Context } from "grammy";
 import { FileAdapter } from "grammy-storages-file";
+import type { Context } from "grammy";
 
-import { Course } from "@/bot/session/course.ts";
 import { Conversation, State } from "@/bot/session/state.ts";
 import { WasMutedFor } from "@/bot/session/was_muted_for.ts";
 import { Locale } from "@/bot/session/locales.ts";
 import { ScheduleOptions } from "@/bot/session/schedules.ts";
+import type { Course } from "@/bot/session/course.ts";
 
+export { Year } from "@/bot/session/course.ts";
 export { Conversation, Locale };
+export type { Course };
 
 export interface SessionData {
   __language_code?: Locale;
