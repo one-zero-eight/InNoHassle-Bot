@@ -5,19 +5,19 @@ export interface Course {
   group?: number;
 }
 
-export enum Degree {
+export const enum Degree {
   B = "B",
   M = "M",
 }
 
-export enum Year {
+export const enum Year {
   Y23 = 23,
   Y22 = 22,
   Y21 = 21,
   Y20 = 20,
 }
 
-export enum Program {
+export const enum Program {
   Ai = "AI",
   Ds = "DS",
   Dsai = "DSAI",
