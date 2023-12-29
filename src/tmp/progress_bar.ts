@@ -1,3 +1,32 @@
+/**
+ * Returns an ASCII progress bar with of given progress and length.
+ * Has no side effects.
+ *
+ * ### Examples:
+ *
+ * `length = 0`:\
+ * `""`
+ *
+ * `progress = 0`:\
+ * `"░░░░░░░░░░░░░░░░"`
+ *
+ * `progress = 0.01`:\
+ * `"▒░░░░░░░░░░░░░░░"`
+ *
+ * `progress = 42`:\
+ * `"▓▓▓▓▓▓▒░░░░░░░░░"`
+ *
+ * `progress = 50`, `length = 10`:\
+ * `"▓▓▓▓▓░░░░░"`
+ *
+ * `progress = 99.99`:\
+ * `"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒"`
+ *
+ * `progress = 100`:\
+ * `"▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓"`
+ * @param progress - A percent value of how full the progress bar is.
+ * @param length - The number of characters in the progress bar [default: `16`].
+ */
 export function generate(progress: number, length = 16): string {
   const [LIGHT, MEDIUM, DARK] = ["░", "▒", "▓"];
 
