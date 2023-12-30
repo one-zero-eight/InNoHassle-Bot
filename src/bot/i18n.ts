@@ -1,4 +1,4 @@
-import type { I18n } from "grammy-i18n";
+import { I18n } from "grammy-i18n";
 
 import { Locale } from "@/bot/session.ts";
 
