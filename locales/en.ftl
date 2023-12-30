@@ -1,5 +1,5 @@
 -url--innohassle = https://innohassle.ru/
--url--one-zero-eight-telegram = "https://t.me/one_zero_eight"
+-url--one-zero-eight-telegram = https://t.me/one_zero_eight
 
 -emoji--check-mark-button = ✅
 -emoji--gear = ⚙️
