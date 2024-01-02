@@ -2,7 +2,7 @@ import { z } from "zod";
 
 import { Year } from "@/bot.ts";
 
-export function parseGpa(str?: string): number {
+export function parseGpa(str: string): number {
   const ZGrades = z.array(
     z.union([
       z.enum(["2", "D", "d", "F", "f"]).transform((_) => 2),
@@ -12,7 +12,7 @@ export function parseGpa(str?: string): number {
     ]),
   );
 
-  const gradesInput = str?.trim().toUpperCase().split(/\s+/);
+  const gradesInput = str.trim().toUpperCase().split(/\s+/);
 
   let grades: number[];
 

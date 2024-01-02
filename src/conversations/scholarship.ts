@@ -24,6 +24,10 @@ composer.callbackQuery(Button.MainMenuScholarship, async (ctx) => {
 export async function onMessage(ctx: MyContext) {
   const grades = ctx.message?.text;
 
+  if (grades === undefined) {
+    return onMessage(ctx);
+  }
+
   const gpa = logic.parseGpa(grades);
 
   let year: Year;
