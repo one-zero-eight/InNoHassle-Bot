@@ -1,6 +1,6 @@
 /**
- * Returns an ASCII progress bar with of given progress and length.
- * Has no side effects.
+ * Returns an ASCII progress bar of given progress and length.
+ * The function has no side effects.
  *
  * ### Examples:
  *
