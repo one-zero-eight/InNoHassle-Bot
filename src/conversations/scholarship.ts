@@ -1,12 +1,11 @@
 import { Composer, InlineKeyboard } from "grammy";
 
 import type { MyContext } from "@/bot.ts";
+import { Year } from "@/bot.ts";
+
+import * as logic from "@/conversations/scholarship/scholarship_logic.ts";
 import { Conversation } from "@/bot.ts";
 import { Button, Message } from "@/labels.ts";
-import {
-  calculate,
-  parseGpa,
-} from "@/conversations/scholarship/scholarship_logic.ts";
 
 export const composer = new Composer<MyContext>();
 
@@ -21,3 +20,18 @@ composer.callbackQuery(Button.MainMenuScholarship, async (ctx) => {
     reply_markup: inlineKeyboard,
   });
 });
+
+export async function onMessage(ctx: MyContext) {
+  const grades = ctx.message?.text;
+
+  const gpa = logic.parseGpa(grades);
+
+  let year: Year;
+  if (ctx.session.course === undefined) {
+    year = Year.Y23;
+  } else {
+    year = ctx.session.course.year;
+  }
+
+  const scholarship = logic.calculate(gpa, year);
+}

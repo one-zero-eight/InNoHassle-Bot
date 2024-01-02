@@ -1,8 +1,8 @@
 import { z } from "zod";
 
-import { Course, Year } from "@/bot.ts";
+import { Year } from "@/bot.ts";
 
-export async function parseGpa(str: string): Promise<number> {
+export function parseGpa(str?: string): number {
   const ZGrades = z.array(
     z.union([
       z.enum(["2", "D", "d", "F", "f"]).transform((_) => 2),
@@ -12,14 +12,14 @@ export async function parseGpa(str: string): Promise<number> {
     ]),
   );
 
-  const gradesInput = str.trim().toUpperCase().split(/\s+/);
+  const gradesInput = str?.trim().toUpperCase().split(/\s+/);
 
   let grades: number[];
 
   try {
-    grades = await ZGrades.parseAsync(gradesInput);
+    grades = ZGrades.parse(gradesInput);
   } catch (e) {
-    if (gradesInput.length !== 1) {
+    if (gradesInput?.length !== 1) {
       throw e;
     }
     grades = [parseFloat(gradesInput[0].replace(",", "."))];
@@ -28,33 +28,33 @@ export async function parseGpa(str: string): Promise<number> {
   const sum = grades.reduce((a, b) => a + b, 0);
   const gpa = sum / grades.length;
 
-  return gpa;
-}
-
-export function calculate(gpa: number, course: Course): number {
   if (!(2.0 <= gpa && gpa <= 5.0)) {
     throw new RangeError(`\`gpa\` (\`${gpa}\`) is out of range [2.0, 5.0]`);
   }
 
-  const m_min = 3000;
+  return gpa;
+}
 
-  let m_max;
-  switch (course.year) {
+export function calculate(gpa: number, courseYear: Year): number {
+  const mMin = 3000;
+
+  let mMax;
+  switch (courseYear) {
     case Year.Y20:
     case Year.Y21:
     case Year.Y22:
-      m_max = 20_000;
+      mMax = 20_000;
       break;
     case Year.Y23:
-      m_max = 10_000;
+      mMax = 10_000;
       break;
   }
 
-  return apply_formula(gpa, m_min, m_max);
+  return applyFormula(gpa, mMin, mMax);
 }
 
-function apply_formula(gpa: number, m_min: number, m_max: number): number {
-  let s = m_min + (m_max - m_min) * ((gpa - 2) / 3) ** 2.5;
+function applyFormula(gpa: number, mMin: number, mMax: number): number {
+  let s = mMin + (mMax - mMin) * ((gpa - 2) / 3) ** 2.5;
   s = Math.floor(s / 100) * 100;
   return s;
 }
