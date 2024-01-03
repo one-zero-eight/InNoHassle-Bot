@@ -1,0 +1,29 @@
+[language-server.deno]
+command = "deno"
+args = ["lsp"]
+config = { enable = true, lint = true, unstable = true }
+
+[[language]]
+name = "javascript"
+roots = ["deno.jsonc"]
+language-servers = ["deno"]
+formatter = { command = "deno", args = ["fmt", "-", "--ext", "js"] }
+
+[[language]]
+name = "json"
+file-types = ["deno.lock", "json", "jsonc"]
+roots = ["deno.jsonc"]
+language-servers = ["deno"]
+formatter = { command = "deno", args = ["fmt", "-", "--ext", "json"] }
+
+[[language]]
+name = "markdown"
+roots = ["deno.jsonc"]
+language-servers = ["deno"]
+formatter = { command = "deno", args = ["fmt", "-", "--ext", "md"] }
+
+[[language]]
+name = "typescript"
+roots = ["deno.jsonc"]
+language-servers = ["deno"]
+formatter = { command = "deno", args = ["fmt", "-", "--ext", "ts"] }
