@@ -1,16 +1,16 @@
 import { Composer, InlineKeyboard } from "grammy";
 
-import type { MyContext } from "@/bot.ts";
-import { composer as start } from "@/conversations/start.ts";
-import { composer as schedules } from "@/conversations/schedules.ts";
-import { composer as information } from "@/conversations/information.ts";
-import { composer as settings } from "@/conversations/settings.ts";
-import { composer as scholarship } from "@/conversations/scholarship.ts";
-import { composer as support } from "@/conversations/support.ts";
-import { Conversation } from "@/bot.ts";
-// import * as eventGroups from "@/tmp/event_groups.ts";
-// import * as scholarship from "@/tmp/scholarship.ts";
-import { Button, Message } from "@/labels.ts";
+import type { MyContext } from "~/bot.ts";
+import { composer as start } from "~/conversations/start.ts";
+import { composer as schedules } from "~/conversations/schedules.ts";
+import { composer as information } from "~/conversations/information.ts";
+import { composer as settings } from "~/conversations/settings.ts";
+import { composer as scholarship } from "~/conversations/scholarship.ts";
+import { composer as support } from "~/conversations/support.ts";
+import { Conversation } from "~/bot.ts";
+// import * as eventGroups from "~/tmp/event_groups.ts";
+// import * as scholarship from "~/tmp/scholarship.ts";
+import { Button, Message } from "~/labels.ts";
 
 export const composer = new Composer<MyContext>();
 

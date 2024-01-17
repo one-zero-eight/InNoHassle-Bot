@@ -1,6 +1,6 @@
 {
   "imports": {
-    "@/": "./src/",
+    "~/": "./src/",
     "assert": "https://deno.land/std@0.210.0/assert/mod.ts",
     "dotenv": "https://deno.land/std@0.204.0/dotenv/mod.ts",
     "grammy": "https://deno.land/x/grammy@v1.19.1/mod.ts",

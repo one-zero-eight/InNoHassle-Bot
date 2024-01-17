@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-import { Year } from "@/bot.ts";
+import { Year } from "~/bot.ts";
 
 export function parseGpa(str: string): number {
   const ZGrades = z.array(

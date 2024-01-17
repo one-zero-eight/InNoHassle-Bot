@@ -1,6 +1,6 @@
 import { I18n } from "grammy-i18n";
 
-import { Locale } from "@/bot/session.ts";
+import { Locale } from "~/bot/session.ts";
 
 // @ts-expect-error: GrammY bug.
 export const i18n = new I18n<MyContext>({
