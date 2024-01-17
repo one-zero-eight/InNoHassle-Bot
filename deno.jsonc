@@ -10,6 +10,7 @@
     "zod": "https://deno.land/x/zod@v3.22.4/mod.ts"
   },
   "tasks": {
-    "start": "deno run --allow-env --allow-net --allow-read --allow-write src/bot.ts"
+    "run": "deno run --allow-env --allow-net --allow-read --allow-write src/bot.ts",
+    "start": "trash sessions/ || rm --force --recursive sessions/; deno task run"
   }
 }
