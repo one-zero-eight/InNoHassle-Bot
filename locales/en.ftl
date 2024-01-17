@@ -42,16 +42,16 @@ start =
 
     Before we get started, let’s set some things up?
 
-start-have-account = Do you have an <a href="{-url--innohassle}">InNoHassle</a> account already?
+start--have-account = Do you have an <a href="{-url--innohassle}">InNoHassle</a> account already?
 
-start-connect-telegram = Perfect! Then would you like to connect your Telegram account to InNoHassle?
+start--connect-telegram = Perfect! Then would you like to connect your Telegram account to InNoHassle?
 
-start-create-account =
+start--create-account =
     Oh, I see. Then I highly recommend creating one, so you can keep your data synced with the website.
 
     To create an account, proceed to <a href="{-url--innohassle}">innohassle.ru</a> and press “<i>Sign in</i>”.
 
-start-schedules = Would you like to get notifications on some schedules?
+start--schedules = Would you like to get notifications on some schedules?
 
 default = What are we up to now?
 
