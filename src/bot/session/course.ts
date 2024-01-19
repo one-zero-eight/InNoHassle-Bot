@@ -1,9 +1,11 @@
-export interface Course {
+interface Course {
   degree: Degree;
   year: Year;
   program: Program;
   group?: number;
 }
+
+export default Course;
 
 export const enum Degree {
   B = "B",

@@ -7,7 +7,8 @@ import * as logic from "~/conversations/scholarship/scholarship_logic.ts";
 import { Conversation } from "~/bot.ts";
 import { Button, Message } from "~/labels.ts";
 
-export const composer = new Composer<MyContext>();
+const composer = new Composer<MyContext>();
+export default composer;
 
 composer.callbackQuery(Button.MainMenuScholarship, async (ctx) => {
   await ctx.deleteMessage();

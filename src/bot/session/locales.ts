@@ -1,3 +1,5 @@
-export const enum Locale {
+const enum Locale {
   En = "en",
 }
+
+export default Locale;

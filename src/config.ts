@@ -8,4 +8,5 @@ await dotenv.load({
   export: true,
 });
 
-export const config = await ZConfig.parseAsync(Deno.env.toObject());
+const config = await ZConfig.parseAsync(Deno.env.toObject());
+export default config;

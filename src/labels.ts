@@ -1,3 +1,3 @@
-export { Label as Button } from "~/labels/buttons.ts";
-export { Label as Command } from "~/labels/commands.ts";
-export { Label as Message } from "~/labels/messages.ts";
+export { default as Button } from "~/labels/buttons.ts";
+export { default as Command } from "~/labels/commands.ts";
+export { default as Message } from "~/labels/messages.ts";

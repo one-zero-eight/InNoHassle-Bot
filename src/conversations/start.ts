@@ -4,7 +4,8 @@ import type { MyContext } from "~/bot.ts";
 import { Conversation } from "~/bot.ts";
 import { Button, Command, Message } from "~/labels.ts";
 
-export const composer = new Composer<MyContext>();
+const composer = new Composer<MyContext>();
+export default composer;
 
 composer.command(Command.Start, async (ctx) => {
   if (ctx.session.state.conversation !== Conversation.Start) {

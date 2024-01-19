@@ -1,12 +1,13 @@
-import type { Context } from "grammy";
 import * as grammy from "grammy";
+import type { Context } from "grammy";
 import { FileAdapter } from "grammy-storages-file";
 
-import type { Course } from "~/bot/session/course.ts";
+import type Course from "~/bot/session/course.ts";
+import type State from "~/bot/session/state.ts";
+import type WasMutedFor from "~/bot/session/was_muted_for.ts";
 import type { ScheduleOptions } from "~/bot/session/schedules.ts";
-import { Conversation, State } from "~/bot/session/state.ts";
-import { WasMutedFor } from "~/bot/session/was_muted_for.ts";
-import { Locale } from "~/bot/session/locales.ts";
+import Locale from "~/bot/session/locales.ts";
+import { Conversation } from "~/bot/session/state.ts";
 
 export type { Course };
 export { Year } from "~/bot/session/course.ts";
@@ -42,4 +43,5 @@ function getSessionKey(ctx: Context): string | undefined {
 
 const storage = new FileAdapter(/* { dirName: "sessions" } */);
 
-export const mySession = grammy.session({ initial, getSessionKey, storage });
+const mySession = grammy.session({ initial, getSessionKey, storage });
+export default mySession;

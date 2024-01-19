@@ -1,5 +1,7 @@
 /** Telegram bot commands starting with a `/` symbol. */
-export const enum Label {
+const enum Command {
   Start = "start",
   Scholarship = "scholarship",
 }
+
+export default Command;

@@ -1,5 +1,5 @@
 /** Messages from `/locales/*.ftl`. */
-export const enum Label {
+const enum Message {
   Start = "start",
   StartHaveAccount = "start--have-account",
   StartConnectTelegram = "start--connect-telegram",
@@ -12,3 +12,5 @@ export const enum Label {
   Scholarship = "scholarship",
   Support = "support",
 }
+
+export default Message;

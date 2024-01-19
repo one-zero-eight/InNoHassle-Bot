@@ -1,5 +1,5 @@
 /** Buttons from `/locales/*.ftl`. */
-export const enum Label {
+const enum Button {
   StartYes = "button--start--yes",
   SettingsLanguage = "button--settings--language",
   SettingsSync = "button--settings--sync",
@@ -19,3 +19,5 @@ export const enum Label {
   MainMenuSettings = "button--main-menu--settings",
   MainMenuSchedules = "button--main-menu--schedules",
 }
+
+export default Button;

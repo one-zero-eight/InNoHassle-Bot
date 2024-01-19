@@ -1,4 +1,11 @@
-import type { MyContext } from "~/bot/context.ts";
+import type MyContext from "~/bot/context.ts";
+
+interface State {
+  conversation: Conversation;
+  context?: MyContext;
+}
+
+export default State;
 
 export const enum Conversation {
   Start = "start",
@@ -7,9 +14,4 @@ export const enum Conversation {
   Information = "information",
   Settings = "settings",
   Support = "support",
-}
-
-export interface State {
-  conversation: Conversation;
-  context?: MyContext;
 }
