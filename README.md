@@ -1,5 +1,7 @@
 # InNoHassle Telegram Bot
 
+![Screenshot](assets/screenshot.png)
+
 A Telegram bot for the [InNoHassle](https://innohassle.ru/) project. Written in
 TypeScript ([Deno](https://deno.com/)) using the [grammY](https://grammy.dev/)
 framework.
