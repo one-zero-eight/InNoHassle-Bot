@@ -7,6 +7,7 @@ import information from "~/conversations/information.ts";
 import settings from "~/conversations/settings.ts";
 import scholarship from "~/conversations/scholarship.ts";
 import support from "~/conversations/support.ts";
+// import _template from "~/conversations/_template.ts";
 import { Conversation } from "~/bot.ts";
 // import * as eventGroups from "~/tmp/event_groups.ts";
 // import * as scholarship from "~/tmp/scholarship.ts";
@@ -21,6 +22,7 @@ composer.use(settings);
 composer.use(information);
 composer.use(scholarship);
 composer.use(support);
+// composer.use(_template);
 
 async function mainMenu(ctx: MyContext) {
   ctx.session.state = { conversation: Conversation.MainMenu };
