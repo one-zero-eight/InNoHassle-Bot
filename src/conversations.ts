@@ -23,8 +23,6 @@ composer.use(scholarship);
 composer.use(support);
 
 async function mainMenu(ctx: MyContext) {
-  await ctx.deleteMessage();
-
   ctx.session.state = { conversation: Conversation.MainMenu };
 
   const inlineKeyboard = new InlineKeyboard()
@@ -34,7 +32,7 @@ async function mainMenu(ctx: MyContext) {
     .text(ctx.t(Button.MainMenuSettings), Button.MainMenuSettings).row()
     .text(ctx.t(Button.MainMenuSupport), Button.MainMenuSupport);
 
-  await ctx.reply(ctx.t(Message.Default), {
+  await ctx.editMessageText(ctx.t(Message.Default), {
     reply_markup: inlineKeyboard,
   });
 }

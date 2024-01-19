@@ -7,12 +7,10 @@ const composer = new Composer<MyContext>();
 export default composer;
 
 composer.callbackQuery(Button.MainMenuInformation, async (ctx) => {
-  await ctx.deleteMessage();
-
   const inlineKeyboard = new InlineKeyboard()
     .text(ctx.t(Button.BackToMainMenu), Button.BackToMainMenu);
 
-  await ctx.reply(ctx.t(Message.Information), {
+  await ctx.editMessageText(ctx.t(Message.Information), {
     reply_markup: inlineKeyboard,
   });
 });

@@ -25,39 +25,33 @@ composer.command(Command.Start, async (ctx) => {
 });
 
 composer.callbackQuery(Button.StartYes, async (ctx) => {
-  await ctx.deleteMessage();
-
   const inlineKeyboard = new InlineKeyboard()
     .text(ctx.t(Button.StartHaveAccountYes), Button.StartHaveAccountYes)
     .text(ctx.t(Button.StartHaveAccountNo), Button.StartHaveAccountNo);
 
-  await ctx.reply(ctx.t(Message.StartHaveAccount), {
+  await ctx.editMessageText(ctx.t(Message.StartHaveAccount), {
     disable_web_page_preview: true,
-    parse_mode: "HTML",
     reply_markup: inlineKeyboard,
+    parse_mode: "HTML",
   });
 });
 
 composer.callbackQuery(Button.StartHaveAccountYes, async (ctx) => {
-  await ctx.deleteMessage();
-
   const inlineKeyboard = new InlineKeyboard()
     .text(ctx.t(Button.StartConnectTelegramYes), Button.StartConnectTelegramYes)
     .text(ctx.t(Button.StartConnectTelegramNo), Button.StartConnectTelegramNo);
 
-  await ctx.reply(ctx.t(Message.StartConnectTelegram), {
+  await ctx.editMessageText(ctx.t(Message.StartConnectTelegram), {
     reply_markup: inlineKeyboard,
   });
 });
 
 composer.callbackQuery(Button.StartHaveAccountNo, async (ctx) => {
-  await ctx.deleteMessage();
-
   const inlineKeyboard = new InlineKeyboard()
     .text(ctx.t(Button.StartCreateAccountYes), Button.StartCreateAccountYes)
     .text(ctx.t(Button.StartCreateAccountNo), Button.StartCreateAccountNo);
 
-  await ctx.reply(ctx.t(Message.StartCreateAccount), {
+  await ctx.editMessageText(ctx.t(Message.StartCreateAccount), {
     disable_web_page_preview: true,
     parse_mode: "HTML",
     reply_markup: inlineKeyboard,
@@ -65,13 +59,11 @@ composer.callbackQuery(Button.StartHaveAccountNo, async (ctx) => {
 });
 
 composer.callbackQuery(Button.StartConnectTelegramYes, async (ctx) => {
-  await ctx.deleteMessage();
-
   // const inlineKeyboard = new InlineKeyboard()
   //   .text(ctx.t(Button.), Button.)
 
   // XXX:
-  await ctx.reply(
+  await ctx.editMessageText(
     `Okay, master, let's kill da hoe!\n` +
       `<code>${ctx.from.id}</code>`,
     {
@@ -83,12 +75,10 @@ composer.callbackQuery(Button.StartConnectTelegramYes, async (ctx) => {
 
 // TODO:
 composer.callbackQuery(Button.StartConnectTelegramNo, async (ctx) => {
-  // await ctx.deleteMessage();
-
   // const inlineKeyboard = new InlineKeyboard()
   //   .text(ctx.t(Button.), Button.)
 
-  // await ctx.reply(ctx.t(Message.), {
+  // await ctx.editMessageText(ctx.t(Message.), {
   //   parse_mode: "HTML",
   //   reply_markup: inlineKeyboard,
   // });
@@ -96,22 +86,18 @@ composer.callbackQuery(Button.StartConnectTelegramNo, async (ctx) => {
 
 // TODO:
 composer.callbackQuery(Button.StartCreateAccountYes, async (ctx) => {
-  await ctx.deleteMessage();
-
   const inlineKeyboard = new InlineKeyboard();
 
-  await ctx.reply(ctx.t(), {
+  await ctx.editMessageText(ctx.t(), {
     reply_markup: inlineKeyboard,
   });
 });
 
 // TODO:
 composer.callbackQuery(Button.StartCreateAccountNo, async (ctx) => {
-  await ctx.deleteMessage();
-
   const inlineKeyboard = new InlineKeyboard();
 
-  await ctx.reply(ctx.t(), {
+  await ctx.editMessageText(ctx.t(), {
     reply_markup: inlineKeyboard,
   });
 });

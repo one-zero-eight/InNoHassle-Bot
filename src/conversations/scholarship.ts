@@ -11,13 +11,12 @@ const composer = new Composer<MyContext>();
 export default composer;
 
 composer.callbackQuery(Button.MainMenuScholarship, async (ctx) => {
-  await ctx.deleteMessage();
   ctx.session.state = { conversation: Conversation.Scholarship };
 
   const inlineKeyboard = new InlineKeyboard()
     .text(ctx.t(Button.BackToMainMenu), Button.BackToMainMenu);
 
-  await ctx.reply(ctx.t(Message.Scholarship), {
+  await ctx.editMessageText(ctx.t(Message.Scholarship), {
     reply_markup: inlineKeyboard,
   });
 });
