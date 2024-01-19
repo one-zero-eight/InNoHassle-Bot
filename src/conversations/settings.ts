@@ -1,6 +1,6 @@
 import { Composer, InlineKeyboard } from "grammy";
 
-import type { MyContext } from "~/bot.ts";
+import { type MyContext } from "~/bot.ts";
 import { Button, Message } from "~/labels.ts";
 
 const composer = new Composer<MyContext>();

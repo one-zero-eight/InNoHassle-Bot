@@ -1,5 +1,5 @@
 import * as grammy from "grammy";
-import type { Context } from "grammy";
+import { type Context } from "grammy";
 import { FileAdapter } from "grammy-storages-file";
 
 import type Course from "~/bot/session/course.ts";
@@ -9,9 +9,8 @@ import type { ScheduleOptions } from "~/bot/session/schedules.ts";
 import Locale from "~/bot/session/locales.ts";
 import { Conversation } from "~/bot/session/state.ts";
 
-export type { Course };
 export { Year } from "~/bot/session/course.ts";
-export { Conversation, Locale };
+export { Conversation, type Course, Locale };
 
 export interface SessionData {
   __language_code?: Locale;

@@ -6,9 +6,8 @@ import config from "~/config.ts";
 import conversations from "~/conversations.ts";
 import type MyContext from "~/bot/context.ts";
 
-export { Conversation, Year } from "~/bot/session.ts";
-export type { MyContext };
-export type { Course } from "~/bot/session.ts";
+export { Conversation, type Course, Year } from "~/bot/session.ts";
+export { type MyContext };
 
 const bot = new Bot<MyContext>(config.BOT_TOKEN);
 export default bot;

@@ -1,10 +1,7 @@
 import { Composer, InlineKeyboard } from "grammy";
 
-import type { MyContext } from "~/bot.ts";
-import { Year } from "~/bot.ts";
-
+import { Conversation, type MyContext, Year } from "~/bot.ts";
 import * as logic from "~/conversations/scholarship/scholarship_logic.ts";
-import { Conversation } from "~/bot.ts";
 import { Button, Message } from "~/labels.ts";
 
 const composer = new Composer<MyContext>();

@@ -1,28 +1,25 @@
 import { Composer, InlineKeyboard } from "grammy";
 
-import type { MyContext } from "~/bot.ts";
+import { Conversation, type MyContext } from "~/bot.ts";
+// import _template from "~/conversations/_template.ts";
 import start from "~/conversations/start.ts";
 import schedules from "~/conversations/schedules.ts";
 import information from "~/conversations/information.ts";
 import settings from "~/conversations/settings.ts";
 import scholarship from "~/conversations/scholarship.ts";
 import support from "~/conversations/support.ts";
-// import _template from "~/conversations/_template.ts";
-import { Conversation } from "~/bot.ts";
-// import * as eventGroups from "~/tmp/event_groups.ts";
-// import * as scholarship from "~/tmp/scholarship.ts";
 import { Button, Message } from "~/labels.ts";
 
 const composer = new Composer<MyContext>();
 export default composer;
 
+// composer.use(_template);
 composer.use(start);
 composer.use(schedules);
 composer.use(settings);
 composer.use(information);
 composer.use(scholarship);
 composer.use(support);
-// composer.use(_template);
 
 async function mainMenu(ctx: MyContext) {
   ctx.session.state = { conversation: Conversation.MainMenu };
