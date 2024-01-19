@@ -13,7 +13,9 @@ The code follows the
 
 ### Module Organization
 
-The structure of modules is similar to Rust’s new style.
+The structure of modules is similar to Rust’s new style: a module named
+`foo.bar` should have separate `foo/bar.ts` and `foo/bar/...` without
+`foo/bar/mod.ts`.
 
 <details>
 <summary><b>Illustration</b></summary>
@@ -45,9 +47,6 @@ src/
 ```
 
 </details>
-
-A module named `foo.bar` should have separate `foo/bar.ts` and `foo/bar/...`
-without `foo/bar/mod.ts`.
 
 One module should not access children of parent/sibling modules. Use
 re-exporting instead.
@@ -97,7 +96,7 @@ Or you can use any file explorer you want instead.
 
 ### Configure local parameters
 
-Copy `.env.example` to `.env`:
+Copy [`.env.example`](.env.example) to `.env`:
 
 ```sh
 $ cp .env.example .env
