@@ -48,9 +48,6 @@ src/
 
 </details>
 
-One module should not access children of parent/sibling modules. Use
-re-exporting instead.
-
 ### Code Structure
 
 - [`deno.jsonc`](deno.jsonc) — the manifest file.
