@@ -1,63 +1,69 @@
 import { Composer, InlineKeyboard } from "grammy";
 
-import { Conversation, type MyContext } from "~/bot.ts";
-import { Button, Command, Message } from "~/labels.ts";
+import State from "~/bot/session/state.ts";
+import type MyContext from "~/bot/context.ts";
+import T from "~/labels.ts";
 
-const composer = new Composer<MyContext>();
-export default composer;
+export const composer = new Composer<MyContext>();
 
-composer.command(Command.Start, async (ctx) => {
-  if (ctx.session.state.conversation !== Conversation.Start) {
+composer.command(T.CommandStart, async (ctx) => {
+  if (ctx.session.state !== State.Start) {
     ctx.reply("Warning");
     return;
   }
 
   const inlineKeyboard = new InlineKeyboard()
-    .text(ctx.t(Button.StartYes), Button.StartYes)
+    .text(ctx.t(T.ButtonStartYes), T.ButtonStartYes)
     .text("Quick Start", "quick-start");
 
-  await ctx.reply(ctx.t(Message.Start), {
+  await ctx.reply(ctx.t(T.CommandStart), {
     disable_web_page_preview: true,
     parse_mode: "HTML",
     reply_markup: inlineKeyboard,
   });
 });
 
-composer.callbackQuery(Button.StartYes, async (ctx) => {
+composer.callbackQuery(T.ButtonStartYes, async (ctx) => {
   const inlineKeyboard = new InlineKeyboard()
-    .text(ctx.t(Button.StartHaveAccountYes), Button.StartHaveAccountYes)
-    .text(ctx.t(Button.StartHaveAccountNo), Button.StartHaveAccountNo);
+    .text(ctx.t(T.ButtonStartHaveAccountYes), T.ButtonStartHaveAccountYes)
+    .text(ctx.t(T.ButtonStartHaveAccountNo), T.ButtonStartHaveAccountNo);
 
-  await ctx.editMessageText(ctx.t(Message.StartHaveAccount), {
+  await ctx.editMessageText(ctx.t(T.StartHaveAccount), {
     disable_web_page_preview: true,
     reply_markup: inlineKeyboard,
     parse_mode: "HTML",
   });
 });
 
-composer.callbackQuery(Button.StartHaveAccountYes, async (ctx) => {
+composer.callbackQuery(T.ButtonStartHaveAccountYes, async (ctx) => {
   const inlineKeyboard = new InlineKeyboard()
-    .text(ctx.t(Button.StartConnectTelegramYes), Button.StartConnectTelegramYes)
-    .text(ctx.t(Button.StartConnectTelegramNo), Button.StartConnectTelegramNo);
+    .text(
+      ctx.t(T.ButtonStartConnectTelegramYes),
+      T.ButtonStartConnectTelegramYes,
+    )
+    .text(
+      ctx.t(T.ButtonStartConnectTelegramNo),
+      T.ButtonStartConnectTelegramNo,
+    );
 
-  await ctx.editMessageText(ctx.t(Message.StartConnectTelegram), {
+  await ctx.editMessageText(ctx.t(T.StartConnectTelegram), {
     reply_markup: inlineKeyboard,
   });
 });
 
-composer.callbackQuery(Button.StartHaveAccountNo, async (ctx) => {
+composer.callbackQuery(T.ButtonStartHaveAccountNo, async (ctx) => {
   const inlineKeyboard = new InlineKeyboard()
-    .text(ctx.t(Button.StartCreateAccountYes), Button.StartCreateAccountYes)
-    .text(ctx.t(Button.StartCreateAccountNo), Button.StartCreateAccountNo);
+    .text(ctx.t(T.ButtonStartCreateAccountYes), T.ButtonStartCreateAccountYes)
+    .text(ctx.t(T.ButtonStartCreateAccountNo), T.ButtonStartCreateAccountNo);
 
-  await ctx.editMessageText(ctx.t(Message.StartCreateAccount), {
+  await ctx.editMessageText(ctx.t(T.StartCreateAccount), {
     disable_web_page_preview: true,
     parse_mode: "HTML",
     reply_markup: inlineKeyboard,
   });
 });
 
-composer.callbackQuery(Button.StartConnectTelegramYes, async (ctx) => {
+composer.callbackQuery(T.ButtonStartConnectTelegramYes, async (ctx) => {
   // const inlineKeyboard = new InlineKeyboard()
   //   .text(ctx.t(Button.), Button.)
 
@@ -73,7 +79,7 @@ composer.callbackQuery(Button.StartConnectTelegramYes, async (ctx) => {
 });
 
 // TODO:
-composer.callbackQuery(Button.StartConnectTelegramNo, async (ctx) => {
+composer.callbackQuery(T.ButtonStartConnectTelegramNo, async (ctx) => {
   // const inlineKeyboard = new InlineKeyboard()
   //   .text(ctx.t(Button.), Button.)
 
@@ -84,19 +90,19 @@ composer.callbackQuery(Button.StartConnectTelegramNo, async (ctx) => {
 });
 
 // TODO:
-composer.callbackQuery(Button.StartCreateAccountYes, async (ctx) => {
+composer.callbackQuery(T.ButtonStartCreateAccountYes, async (ctx) => {
   const inlineKeyboard = new InlineKeyboard();
 
-  await ctx.editMessageText(ctx.t(), {
-    reply_markup: inlineKeyboard,
-  });
+  // await ctx.editMessageText(ctx.t(), {
+  //   reply_markup: inlineKeyboard,
+  // });
 });
 
 // TODO:
-composer.callbackQuery(Button.StartCreateAccountNo, async (ctx) => {
+composer.callbackQuery(T.ButtonStartCreateAccountNo, async (ctx) => {
   const inlineKeyboard = new InlineKeyboard();
 
-  await ctx.editMessageText(ctx.t(), {
-    reply_markup: inlineKeyboard,
-  });
+  // await ctx.editMessageText(ctx.t(), {
+  //   reply_markup: inlineKeyboard,
+  // });
 });

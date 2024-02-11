@@ -1,16 +1,17 @@
 import { Composer, InlineKeyboard } from "grammy";
 
-import { type MyContext } from "~/bot.ts";
-import { Button, Message } from "~/labels.ts";
+import type MyContext from "~/bot/context.ts";
+import T from "~/labels.ts";
 
-const composer = new Composer<MyContext>();
-export default composer;
+export const composer = new Composer<MyContext>();
 
-composer.callbackQuery(Button.MainMenuSchedules, async (ctx) => {
+composer.callbackQuery(T.ButtonMainMenuSchedules, async (ctx) => {
+  ctx.session.state = undefined;
+
   const inlineKeyboard = new InlineKeyboard()
-    .text(ctx.t(Button.BackToMainMenu), Button.BackToMainMenu);
+    .text(ctx.t(T.ButtonBackToMainMenu), T.ButtonBackToMainMenu);
 
-  await ctx.editMessageText(ctx.t(Message.Schedules), {
+  await ctx.editMessageText(ctx.t(T.Schedules), {
     reply_markup: inlineKeyboard,
   });
 });

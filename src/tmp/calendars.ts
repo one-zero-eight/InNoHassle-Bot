@@ -1,1 +1,1 @@
-import * as ical_js from "ical-js";
+import ical from "ical-js";

@@ -1,71 +1,24 @@
-import { Composer, InlineKeyboard } from "grammy";
+import { Composer } from "grammy";
 
-import { Conversation, type MyContext } from "~/bot.ts";
-// import _template from "~/conversations/_template.ts";
-import start from "~/conversations/start.ts";
-import schedules from "~/conversations/schedules.ts";
-import information from "~/conversations/information.ts";
-import settings from "~/conversations/settings.ts";
-import scholarship from "~/conversations/scholarship.ts";
-import support from "~/conversations/support.ts";
-import { Button, Message } from "~/labels.ts";
+import type MyContext from "~/bot/context.ts";
+
+import * as start from "~/conversations/start.ts";
+import * as mainMenu from "~/conversations/main_menu.ts";
+import * as information from "~/conversations/information.ts";
+import * as schedules from "~/conversations/schedules.ts";
+import * as settings from "~/conversations/settings.ts";
+import * as scholarship from "~/conversations/scholarship.ts";
+import * as support from "~/conversations/support.ts";
+import * as global from "~/conversations/global.ts";
 
 const composer = new Composer<MyContext>();
 export default composer;
 
-// composer.use(_template);
-composer.use(start);
-composer.use(schedules);
-composer.use(settings);
-composer.use(information);
-composer.use(scholarship);
-composer.use(support);
-
-async function mainMenu(ctx: MyContext) {
-  ctx.session.state = { conversation: Conversation.MainMenu };
-
-  const inlineKeyboard = new InlineKeyboard()
-    .text(ctx.t(Button.MainMenuSchedules), Button.MainMenuSchedules).row()
-    .text(ctx.t(Button.MainMenuScholarship), Button.MainMenuScholarship).row()
-    .text(ctx.t(Button.MainMenuInformation), Button.MainMenuInformation).row()
-    .text(ctx.t(Button.MainMenuSettings), Button.MainMenuSettings).row()
-    .text(ctx.t(Button.MainMenuSupport), Button.MainMenuSupport);
-
-  await ctx.editMessageText(ctx.t(Message.Default), {
-    reply_markup: inlineKeyboard,
-  });
-}
-
-composer.callbackQuery("quick-start", mainMenu);
-composer.callbackQuery(Button.StartSchedulesYes, mainMenu);
-composer.callbackQuery(Button.StartSchedulesNo, mainMenu);
-composer.callbackQuery(Button.BackToMainMenu, mainMenu);
-
-// setInterval(async function () {
-//   const newEventGroups = await eventGroups.get();
-//   console.log(newEventGroups);
-// }, 60_000);
-
-composer.on("message", async (ctx) => {
-  switch (ctx.session.state.conversation) {
-    case Conversation.Start: {
-      break;
-    }
-    case Conversation.Scholarship: {
-      break;
-    }
-    case Conversation.Information: {
-      break;
-    }
-    case Conversation.Settings: {
-      break;
-    }
-    case Conversation.Support: {
-      break;
-    }
-    default: {
-      await mainMenu(ctx);
-      break;
-    }
-  }
-});
+composer.use(start.composer);
+composer.use(mainMenu.composer);
+composer.use(information.composer);
+composer.use(schedules.composer);
+composer.use(settings.composer);
+composer.use(scholarship.composer);
+composer.use(support.composer);
+composer.use(global.composer);

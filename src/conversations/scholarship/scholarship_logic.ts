@@ -1,6 +1,7 @@
 import { z } from "zod";
 
-import { Year } from "~/bot.ts";
+import ScholarshipCourse from "~/bot/session/scholarship_course.ts";
+import T from "~/labels.ts";
 
 export function parseGpa(str: string): number {
   const ZGrades = z.array(
@@ -35,19 +36,19 @@ export function parseGpa(str: string): number {
   return gpa;
 }
 
-export function calculate(gpa: number, courseYear: Year): number {
+export function calculate(gpa: number, course: ScholarshipCourse): number {
   const mMin = 3000;
 
   let mMax;
-  switch (courseYear) {
-    case Year.Y20:
-    case Year.Y21:
-    case Year.Y22:
-      mMax = 20_000;
-      break;
-    case Year.Y23:
+  switch (course) {
+    case ScholarshipCourse.B23: {
       mMax = 10_000;
       break;
+    }
+    case ScholarshipCourse.B22Plus: {
+      mMax = 20_000;
+      break;
+    }
   }
 
   return applyFormula(gpa, mMin, mMax);
@@ -57,4 +58,15 @@ function applyFormula(gpa: number, mMin: number, mMax: number): number {
   let s = mMin + (mMax - mMin) * ((gpa - 2) / 3) ** 2.5;
   s = Math.floor(s / 100) * 100;
   return s;
+}
+
+export function courseName(course: ScholarshipCourse): string {
+  switch (course) {
+    case ScholarshipCourse.B22Plus: {
+      return T.CourseB22Plus;
+    }
+    case ScholarshipCourse.B23: {
+      return T.CourseB23;
+    }
+  }
 }
