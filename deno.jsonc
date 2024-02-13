@@ -11,6 +11,7 @@
   },
   "tasks": {
     "run": "deno run --allow-env --allow-net --allow-read --allow-write src/bot.ts",
-    "start": "trash sessions/ || rm --force --recursive sessions/; deno task run"
+    "clear": "trash sessions/ || rm --force --recursive sessions/",
+    "run-clear": "deno task clear && deno task run"
   }
 }

@@ -68,7 +68,8 @@ You need to have `deno` available on your machine. Refer to the
 for additional information.
 
 ```sh
-$ git clone one-zero-eight/InNoHassle-Bot
+# git clone one-zero-eight/InNoHassle-Bot
+
 $ cd InNoHassle-Bot/
 ```
 
