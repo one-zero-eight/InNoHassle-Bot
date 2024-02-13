@@ -59,7 +59,7 @@ src/
 - [`src/labels`](src/labels) — most string literals are wrapped into enums here
   for the sake of maintainability and IDE suggestions.
 
-## Local Deveolpment
+## Local Development
 
 ### Dependencies
 
@@ -67,29 +67,10 @@ You need to have `deno` available on your machine. Refer to the
 [official guide](https://docs.deno.com/runtime/manual/getting_started/installation)
 for additional information.
 
-### Clone the repository
-
-Via HTTPS:
-
 ```sh
-$ git clone https://github.com/one-zero-eight/InNoHassle-Bot.git
-```
-
-Via SSH:
-
-```sh
-$ git clone git@github.com:one-zero-eight/InNoHassle-Bot.git
-```
-
-### Open the directory
-
-The CLI way:
-
-```sh
+$ git clone one-zero-eight/InNoHassle-Bot
 $ cd InNoHassle-Bot/
 ```
-
-Or you can use any file explorer you want instead.
 
 ### Configure local parameters
 
@@ -107,7 +88,7 @@ get the token from [BotFather](https://t.me/BotFather)).
 Launching from scratch:
 
 ```sh
-$ deno task start
+$ deno task run-clear
 ```
 
 Saving user data:

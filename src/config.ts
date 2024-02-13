@@ -8,5 +8,5 @@ await dotenv.load({
   export: true,
 });
 
-const config = await ConfigSchema.parseAsync(Deno.env.toObject());
+const config = ConfigSchema.parse(Deno.env.toObject());
 export default config;
