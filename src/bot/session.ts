@@ -22,6 +22,7 @@ export interface SessionData {
 function initial(): SessionData {
   return {
     __language_code: Locale.En,
+    // The message will always exist, just not right now...
     messageId: -1,
     state: State.Start,
     innohassleId: undefined,
