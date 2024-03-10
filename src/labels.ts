@@ -31,6 +31,8 @@ const enum T {
   StartCreateAccount = "start--create-account",
   StartSchedules = "start--schedules",
   ScholarshipRequest = "scholarship--request",
+  ScholarshipResponse = "scholarship--response",
+  ScholarshipSelectCourse = "scholarship--select-course",
 
   Information = "information",
   Schedules = "schedules",

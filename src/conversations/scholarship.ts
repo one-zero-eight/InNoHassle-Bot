@@ -8,7 +8,7 @@ import ScholarshipCourse from "~/bot/session/scholarship_course.ts";
 
 export const composer = new Composer<MyContext>();
 
-async function main(ctx: MyContext) {
+async function main(ctx: MyContext, error: boolean, gpa?: number) {
   ctx.session.state = State.Scholarship;
 
   const inlineKeyboard = new InlineKeyboard()
@@ -16,19 +16,51 @@ async function main(ctx: MyContext) {
       ctx.t(T.ButtonScholarshipSelectCourse),
       T.ButtonScholarshipSelectCourse,
     )
-    .row()
-    .text(ctx.t(T.ButtonBackToMainMenu), T.ButtonBackToMainMenu);
+    .text(
+      ctx.t(T.ButtonBackToMainMenu),
+      T.ButtonBackToMainMenu,
+    );
 
-  await ctx.editMessageText(
-    ctx.t(T.ScholarshipRequest, {
-      course: ctx.t(logic.courseName(ctx.session.scholarshipCourse)),
-    }),
+  const course = ctx.t(logic.courseName(ctx.session.scholarshipCourse));
+
+  if (error) {
+    await ctx.api.editMessageText(
+      ctx.chat?.id!,
+      ctx.session.messageId,
+      ctx.t(T.ScholarshipRequest, { course, error: 1 }),
+      { parse_mode: "HTML", reply_markup: inlineKeyboard },
+    );
+    return;
+  }
+
+  if (gpa !== undefined) {
+    const scholarship = logic.calculate(gpa, ctx.session.scholarshipCourse);
+
+    await ctx.api.editMessageText(
+      ctx.chat?.id!,
+      ctx.session.messageId,
+      ctx.t(T.ScholarshipResponse, { course, gpa, scholarship }),
+      { parse_mode: "HTML", reply_markup: inlineKeyboard },
+    );
+    return;
+  }
+
+  await ctx.api.editMessageText(
+    ctx.chat?.id!,
+    ctx.session.messageId,
+    ctx.t(T.ScholarshipRequest, { course, error: 0 }),
     { parse_mode: "HTML", reply_markup: inlineKeyboard },
   );
 }
 
-composer.callbackQuery(T.ButtonMainMenuScholarship, main);
-composer.callbackQuery(T.ButtonBackToScholarship, main);
+composer.callbackQuery(
+  T.ButtonMainMenuScholarship,
+  async (ctx) => await main(ctx, false, undefined),
+);
+composer.callbackQuery(
+  T.ButtonBackToScholarship,
+  async (ctx) => await main(ctx, false, undefined),
+);
 
 composer.callbackQuery(T.ButtonScholarshipSelectCourse, async (ctx) => {
   ctx.session.state = undefined;
@@ -39,32 +71,36 @@ composer.callbackQuery(T.ButtonScholarshipSelectCourse, async (ctx) => {
     .row()
     .text(ctx.t(T.ButtonBackToScholarship), T.ButtonBackToScholarship);
 
-  await ctx.editMessageText(
-    ctx.t(T.ButtonScholarshipSelectCourse),
+  await ctx.api.editMessageText(
+    ctx.chat?.id!,
+    ctx.session.messageId,
+    ctx.t(T.ScholarshipSelectCourse),
     { parse_mode: "HTML", reply_markup: inlineKeyboard },
   );
 });
 
 composer.callbackQuery(T.CourseB23, async (ctx) => {
   ctx.session.scholarshipCourse = ScholarshipCourse.B23;
-  return await main(ctx);
+  return await main(ctx, false, undefined);
 });
 
 composer.callbackQuery(T.CourseB22Plus, async (ctx) => {
   ctx.session.scholarshipCourse = ScholarshipCourse.B22Plus;
-  return await main(ctx);
+  return await main(ctx, false, undefined);
 });
 
 export async function onMessage(ctx: MyContext) {
-  // await ctx.reply(ctx.t(Message.ScholarshipRequest));
   const grades = ctx.message?.text;
+  await ctx.deleteMessage();
 
   if (grades === undefined) {
-    return onMessage(ctx);
+    return await main(ctx, true, undefined);
   }
 
-  const gpa = logic.parseGpa(grades);
-
-  const scholarship = logic.calculate(gpa, ctx.session.scholarshipCourse);
-  ctx.reply(scholarship.toString());
+  try {
+    const gpa = logic.parseGpa(grades);
+    return await main(ctx, false, gpa);
+  } catch (_) {
+    return await main(ctx, true, undefined);
+  }
 }

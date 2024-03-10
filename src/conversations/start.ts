@@ -16,11 +16,11 @@ composer.command(T.CommandStart, async (ctx) => {
     .text(ctx.t(T.ButtonStartYes), T.ButtonStartYes)
     .text("Quick Start", "quick-start");
 
-  await ctx.reply(ctx.t(T.CommandStart), {
+  ctx.session.messageId = (await ctx.reply(ctx.t(T.CommandStart), {
     disable_web_page_preview: true,
     parse_mode: "HTML",
     reply_markup: inlineKeyboard,
-  });
+  })).message_id;
 });
 
 composer.callbackQuery(T.ButtonStartYes, async (ctx) => {

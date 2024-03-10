@@ -3,7 +3,7 @@ import { z } from "zod";
 import ScholarshipCourse from "~/bot/session/scholarship_course.ts";
 import T from "~/labels.ts";
 
-export function parseGpa(str: string): number {
+export function parseGpa(str: string): number | never {
   const ZGrades = z.array(
     z.union([
       z.enum(["2", "D", "d", "F", "f"]).transform((_) => 2),
@@ -16,14 +16,14 @@ export function parseGpa(str: string): number {
   const gradesInput = str.trim().toUpperCase().split(/\s+/);
 
   let grades: number[];
-
   try {
     grades = ZGrades.parse(gradesInput);
   } catch (e) {
-    if (gradesInput?.length !== 1) {
+    if (gradesInput?.length === 1) {
+      grades = [parseFloat(gradesInput[0].replace(",", "."))];
+    } else {
       throw e;
     }
-    grades = [parseFloat(gradesInput[0].replace(",", "."))];
   }
 
   const sum = grades.reduce((a, b) => a + b, 0);
@@ -60,7 +60,7 @@ function applyFormula(gpa: number, mMin: number, mMax: number): number {
   return s;
 }
 
-export function courseName(course: ScholarshipCourse): string {
+export function courseName(course: ScholarshipCourse): T {
   switch (course) {
     case ScholarshipCourse.B22Plus: {
       return T.CourseB22Plus;

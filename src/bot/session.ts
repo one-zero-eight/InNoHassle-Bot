@@ -10,6 +10,7 @@ import type WasMutedFor from "~/bot/session/was_muted_for.ts";
 
 export interface SessionData {
   __language_code?: Locale;
+  messageId: number;
   state?: State;
   innohassleId?: number;
   scholarshipCourse: ScholarshipCourse;
@@ -21,6 +22,7 @@ export interface SessionData {
 function initial(): SessionData {
   return {
     __language_code: Locale.En,
+    messageId: -1,
     state: State.Start,
     innohassleId: undefined,
     notifications: [],

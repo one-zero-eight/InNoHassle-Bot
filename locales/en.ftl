@@ -77,12 +77,23 @@ default = What are we up to now?
 schedules = [schedules Schedules]
 
 scholarship--request =
-    <b>{ button.main-menu--scholarship }</b>
+    <b>{ button.main-menu--scholarship }</b> for the { $course } course.
 
-    <b>{ -emoji.writing-hand } Course:</b> { $course }
-
-    Please, send your grades separated by space. Example:
+    { $error ->
+        [0] Please, send your grades separated by space. Example:
+        [1] <b><u>Please, send your true grades separated by space. Example:</u></b>
+        *[other] { -bug } scholarship--request
+    }
     <blockquote>B A A B C B P</blockquote>
+
+scholarship--response =
+    <b>{ button.main-menu--scholarship }</b> for the { $course } course.
+
+    GPA: { $gpa }.
+
+    <b>{ $scholarship } RUB.</b>
+
+scholarship--select-course = <b>{ button.scholarship--select-course }:</b>
 
 information = [information Information]
 
