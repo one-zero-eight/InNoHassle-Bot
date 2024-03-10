@@ -12,7 +12,7 @@ export interface SessionData {
   __language_code?: Locale;
   messageId: number;
   state?: State;
-  innohassleId?: number;
+  innohassleId?: string;
   scholarshipCourse: ScholarshipCourse;
   notifications: ScheduleOptions[];
   mutedTill?: Date;
