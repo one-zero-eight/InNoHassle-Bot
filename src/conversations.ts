@@ -8,6 +8,7 @@ import * as information from "~/conversations/information.ts";
 import * as schedules from "~/conversations/schedules.ts";
 import * as settings from "~/conversations/settings.ts";
 import * as scholarship from "~/conversations/scholarship.ts";
+import * as sport from "~/conversations/sport.ts";
 import * as support from "~/conversations/support.ts";
 import * as global from "~/conversations/global.ts";
 
@@ -20,5 +21,6 @@ composer.use(information.composer);
 composer.use(schedules.composer);
 composer.use(settings.composer);
 composer.use(scholarship.composer);
+composer.use(sport.composer);
 composer.use(support.composer);
 composer.use(global.composer);

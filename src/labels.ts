@@ -19,6 +19,7 @@ const enum T {
   ButtonMainMenuInformation = "button.main-menu--information",
   ButtonMainMenuSettings = "button.main-menu--settings",
   ButtonMainMenuSchedules = "button.main-menu--schedules",
+  ButtonMainMenuSport = "button.main-menu--sport",
 
   CommandStart = "start",
 
@@ -34,6 +35,7 @@ const enum T {
   Information = "information",
   Schedules = "schedules",
   Settings = "settings",
+  Sport = "sport",
   Support = "support",
 }
 

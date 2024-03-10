@@ -13,6 +13,7 @@ export async function mainMenu(ctx: MyContext) {
     .text(ctx.t(T.ButtonMainMenuScholarship), T.ButtonMainMenuScholarship).row()
     .text(ctx.t(T.ButtonMainMenuInformation), T.ButtonMainMenuInformation).row()
     .text(ctx.t(T.ButtonMainMenuSettings), T.ButtonMainMenuSettings).row()
+    .text(ctx.t(T.ButtonMainMenuSport), T.ButtonMainMenuSport).row()
     .text(ctx.t(T.ButtonMainMenuSupport), T.ButtonMainMenuSupport);
 
   await ctx.editMessageText(

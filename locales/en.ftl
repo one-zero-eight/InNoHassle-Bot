@@ -10,6 +10,7 @@
 -emoji =
     .check-mark-button = ✅
     .flag-united-states = 🇺🇸
+    .flexed-biceps = 💪
     .gear = ⚙️
     .globe-with-meridians = 🌐
     .left-arrow = ⬅️
@@ -38,6 +39,7 @@ button =
     .main-menu--schedules = { -emoji.tear-off-calendar } Schedules
     .main-menu--information = { -emoji.open-book } Information
     .main-menu--scholarship = { -emoji.money-with-wings } Scholarship
+    .main-menu--sport = { -emoji.flexed-biceps } Sport
     .main-menu--support = { -emoji.speech-balloon } Support
     .back-to-main-menu = { -emoji.left-arrow } Back
     .back-to-scholarship = { button.back-to-main-menu }
@@ -93,5 +95,7 @@ settings =
         [1] { -emoji.globe-with-meridians } <b>InNoHassle account:</b> { $fullName }
         *[other] { -bug } settings
     }
+
+sport = [sport Sport]
 
 support = [support Support]
