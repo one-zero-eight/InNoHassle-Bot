@@ -10,10 +10,9 @@ export async function mainMenu(ctx: MyContext) {
 
   const inlineKeyboard = new InlineKeyboard()
     .text(ctx.t(T.ButtonMainMenuSchedules), T.ButtonMainMenuSchedules)
-    .text(ctx.t(T.ButtonMainMenuSport), T.ButtonMainMenuSport)
     .row()
+    .text(ctx.t(T.ButtonMainMenuSport), T.ButtonMainMenuSport)
     .text(ctx.t(T.ButtonMainMenuScholarship), T.ButtonMainMenuScholarship)
-    .text(ctx.t(T.ButtonMainMenuInformation), T.ButtonMainMenuInformation)
     .row()
     .text(ctx.t(T.ButtonMainMenuSettings), T.ButtonMainMenuSettings)
     .text(ctx.t(T.ButtonMainMenuSupport), T.ButtonMainMenuSupport);
