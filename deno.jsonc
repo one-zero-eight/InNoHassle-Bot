@@ -1,0 +1,17 @@
+{
+  "imports": {
+    "~/": "./src/",
+    "assert": "https://deno.land/std@0.210.0/assert/mod.ts",
+    "dotenv": "https://deno.land/std@0.204.0/dotenv/mod.ts",
+    "grammy": "https://deno.land/x/grammy@v1.19.1/mod.ts",
+    "grammy-i18n": "https://deno.land/x/grammy_i18n@v1.0.1/mod.ts",
+    "grammy-storages-file": "https://deno.land/x/grammy_storages@v2.4.0/file/src/mod.ts",
+    "ical-js": "npm:ical.js",
+    "zod": "https://deno.land/x/zod@v3.22.4/mod.ts"
+  },
+  "tasks": {
+    "run": "deno run --allow-env --allow-net --allow-read --allow-write src/bot.ts",
+    "clear": "trash sessions/ || rm --force --recursive sessions/",
+    "run-clear": "deno task clear && deno task run"
+  }
+}
