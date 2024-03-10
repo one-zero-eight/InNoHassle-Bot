@@ -3,29 +3,47 @@ import { z } from "zod";
 import ScholarshipCourse from "~/bot/session/scholarship_course.ts";
 import T from "~/labels.ts";
 
-export function parseGpa(str: string): number | never {
+const enum Grade {
+  A = 5,
+  B = 4,
+  C = 3,
+  D = 2,
+}
+
+export type ParsedGrades = {
+  grades?: Grade[];
+  gpa: number;
+};
+
+export function parseGrades(str: string): ParsedGrades | never {
   const ZGrades = z.array(
     z.union([
-      z.enum(["2", "D", "d", "F", "f"]).transform((_) => 2),
-      z.enum(["3", "C", "c"]).transform((_) => 3),
-      z.enum(["4", "B", "b"]).transform((_) => 4),
-      z.enum(["5", "A", "a", "P", "p"]).transform((_) => 5),
+      z.enum(["5", "A", "a", "P", "p"]).transform((_) => Grade.A),
+      z.enum(["4", "B", "b"]).transform((_) => Grade.B),
+      z.enum(["3", "C", "c"]).transform((_) => Grade.C),
+      z.enum(["2", "D", "d", "F", "f"]).transform((_) => Grade.D),
     ]),
   );
+  const gradesInput = str.trim().replace(/\s/g, "");
 
-  const gradesInput = str.trim().toUpperCase().split(/\s+/);
+  if (gradesInput.includes(".")) {
+    const gpa = Number.parseFloat(gradesInput);
 
-  let grades: number[];
-  try {
-    grades = ZGrades.parse(gradesInput);
-  } catch (e) {
-    if (gradesInput?.length === 1) {
-      grades = [parseFloat(gradesInput[0].replace(",", "."))];
-    } else {
-      throw e;
+    if (!isNaN(gpa) && 2.0 <= gpa && gpa <= 5.0) {
+      return { grades: undefined, gpa };
     }
   }
 
+  const result = ZGrades.safeParse(gradesInput.split(""));
+
+  if (result.success) {
+    return { grades: result.data, gpa: parseGpa(result.data) };
+  } else {
+    throw result.error;
+  }
+}
+
+function parseGpa(grades: Grade[]): number | never {
   const sum = grades.reduce((a, b) => a + b, 0);
   const gpa = sum / grades.length;
 
@@ -36,8 +54,56 @@ export function parseGpa(str: string): number | never {
   return gpa;
 }
 
+export function formatGrades(grades: Grade[]): string {
+  let formatted = "";
+
+  switch (grades[0]) {
+    case Grade.A: {
+      formatted += "A";
+      break;
+    }
+    case Grade.B: {
+      formatted += "B";
+      break;
+    }
+    case Grade.C: {
+      formatted += "C";
+      break;
+    }
+    case Grade.D: {
+      formatted += "D";
+      break;
+    }
+  }
+
+  for (const it of grades.slice(1)) {
+    formatted += " ";
+
+    switch (it) {
+      case Grade.A: {
+        formatted += "A";
+        break;
+      }
+      case Grade.B: {
+        formatted += "B";
+        break;
+      }
+      case Grade.C: {
+        formatted += "C";
+        break;
+      }
+      case Grade.D: {
+        formatted += "D";
+        break;
+      }
+    }
+  }
+
+  return formatted;
+}
+
 export function calculate(gpa: number, course: ScholarshipCourse): number {
-  const mMin = 3000;
+  const mMin = 3_000;
 
   let mMax;
   switch (course) {

@@ -5,6 +5,7 @@ import * as logic from "~/conversations/scholarship/scholarship_logic.ts";
 import type MyContext from "~/bot/context.ts";
 import T from "~/labels.ts";
 import ScholarshipCourse from "~/bot/session/scholarship_course.ts";
+import { type ParsedGrades } from "~/conversations/scholarship/scholarship_logic.ts";
 
 export const composer = new Composer<MyContext>();
 
@@ -16,7 +17,7 @@ const enum CallType {
 
 type Options =
   | { callType: CallType.Request }
-  | { callType: CallType.Ok; gpa: number }
+  | { callType: CallType.Ok; grades: ParsedGrades }
   | { callType: CallType.Err };
 
 async function main(ctx: MyContext, opts: Options) {
@@ -27,14 +28,9 @@ async function main(ctx: MyContext, opts: Options) {
       ctx.t(T.ButtonScholarshipSelectCourse),
       T.ButtonScholarshipSelectCourse,
     )
-    .text(
-      ctx.t(T.ButtonBackToMainMenu),
-      T.ButtonBackToMainMenu,
-    );
+    .text(ctx.t(T.ButtonBackToMainMenu), T.ButtonBackToMainMenu);
 
-  const course = ctx.t(
-    logic.courseName(ctx.session.scholarshipCourse),
-  );
+  const course = ctx.t(logic.courseName(ctx.session.scholarshipCourse));
 
   switch (opts.callType) {
     case CallType.Request: {
@@ -48,20 +44,36 @@ async function main(ctx: MyContext, opts: Options) {
     }
     case CallType.Ok: {
       const scholarship = logic.calculate(
-        opts.gpa,
+        opts.grades.gpa,
         ctx.session.scholarshipCourse,
       );
 
-      await ctx.api.editMessageText(
-        ctx.chat?.id!,
-        ctx.session.messageId,
-        ctx.t(T.ScholarshipResponse, {
-          course,
-          gpa: opts.gpa,
-          scholarship,
-        }),
-        { parse_mode: "HTML", reply_markup: inlineKeyboard },
-      );
+      if (opts.grades.grades !== undefined) {
+        const grades = logic.formatGrades(opts.grades.grades);
+
+        await ctx.api.editMessageText(
+          ctx.chat?.id!,
+          ctx.session.messageId,
+          ctx.t(T.ScholarshipResponseGrades, {
+            course,
+            grades,
+            gpa: opts.grades.gpa,
+            scholarship,
+          }),
+          { parse_mode: "HTML", reply_markup: inlineKeyboard },
+        );
+      } else {
+        await ctx.api.editMessageText(
+          ctx.chat?.id!,
+          ctx.session.messageId,
+          ctx.t(T.ScholarshipResponse, {
+            course,
+            gpa: opts.grades.gpa,
+            scholarship,
+          }),
+          { parse_mode: "HTML", reply_markup: inlineKeyboard },
+        );
+      }
       break;
     }
     case CallType.Err: {
@@ -117,7 +129,7 @@ export async function onMessage(ctx: MyContext) {
   try {
     const grades = ctx.message?.text;
     await ctx.deleteMessage();
-    opts = { callType: CallType.Ok, gpa: logic.parseGpa(grades!) };
+    opts = { callType: CallType.Ok, grades: logic.parseGrades(grades!) };
   } catch (_) {
     opts = { callType: CallType.Err };
   }

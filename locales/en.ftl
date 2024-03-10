@@ -55,9 +55,9 @@ start =
     Hello! I’m the <a href="{ -url.innohassle }">InNoHassle</a> bot created by <a href="{ -url.one-zero-eight-telegram }">one-zero-eight</a>.
 
     As for now, I can:
+    • manage your sport events;
     • calculate your scholarship;
-    • notify you about upcoming events;
-    • provide you with information about the university staff.
+    • notify you about upcoming events.
 
     Before we get started, let’s set some things up?
 
@@ -80,15 +80,22 @@ scholarship--request =
     <b>{ button.main-menu--scholarship }</b> for the { $course } course.
 
     { $error ->
-        [0] Please, send your grades separated by space. Example:
-        [1] <b>Please, send your <u>true</u> grades separated by space! Example:</b>
+        [0] Please, send me your grades or GPA.
+        [1] <b>Please, send me your <u>true</u> grades or GPA!</b>
         *[other] { -bug } <code>scholarship--request</code>.
     }
-    <blockquote>B A A B C B P</blockquote>
 
 scholarship--response =
     <b>{ button.main-menu--scholarship }</b> for the { $course } course.
 
+    GPA: { $gpa }.
+
+    <b>{ $scholarship } RUB.</b>
+
+scholarship--response-grades =
+    <b>{ button.main-menu--scholarship }</b> for the { $course } course.
+
+    Grades: { $grades }.
     GPA: { $gpa }.
 
     <b>{ $scholarship } RUB.</b>

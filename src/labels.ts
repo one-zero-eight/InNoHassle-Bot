@@ -32,6 +32,7 @@ const enum T {
   StartSchedules = "start--schedules",
   ScholarshipRequest = "scholarship--request",
   ScholarshipResponse = "scholarship--response",
+  ScholarshipResponseGrades = "scholarship--response-grades",
   ScholarshipSelectCourse = "scholarship--select-course",
 
   Information = "information",
