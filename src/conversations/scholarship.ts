@@ -8,7 +8,18 @@ import ScholarshipCourse from "~/bot/session/scholarship_course.ts";
 
 export const composer = new Composer<MyContext>();
 
-async function main(ctx: MyContext, error: boolean, gpa?: number) {
+const enum CallType {
+  Request,
+  Ok,
+  Err,
+}
+
+type Options =
+  | { callType: CallType.Request }
+  | { callType: CallType.Ok; gpa: number }
+  | { callType: CallType.Err };
+
+async function main(ctx: MyContext, opts: Options) {
   ctx.session.state = State.Scholarship;
 
   const inlineKeyboard = new InlineKeyboard()
@@ -21,45 +32,56 @@ async function main(ctx: MyContext, error: boolean, gpa?: number) {
       T.ButtonBackToMainMenu,
     );
 
-  const course = ctx.t(logic.courseName(ctx.session.scholarshipCourse));
-
-  if (error) {
-    await ctx.api.editMessageText(
-      ctx.chat?.id!,
-      ctx.session.messageId,
-      ctx.t(T.ScholarshipRequest, { course, error: 1 }),
-      { parse_mode: "HTML", reply_markup: inlineKeyboard },
-    );
-    return;
-  }
-
-  if (gpa !== undefined) {
-    const scholarship = logic.calculate(gpa, ctx.session.scholarshipCourse);
-
-    await ctx.api.editMessageText(
-      ctx.chat?.id!,
-      ctx.session.messageId,
-      ctx.t(T.ScholarshipResponse, { course, gpa, scholarship }),
-      { parse_mode: "HTML", reply_markup: inlineKeyboard },
-    );
-    return;
-  }
-
-  await ctx.api.editMessageText(
-    ctx.chat?.id!,
-    ctx.session.messageId,
-    ctx.t(T.ScholarshipRequest, { course, error: 0 }),
-    { parse_mode: "HTML", reply_markup: inlineKeyboard },
+  const course = ctx.t(
+    logic.courseName(ctx.session.scholarshipCourse),
   );
+
+  switch (opts.callType) {
+    case CallType.Request: {
+      await ctx.api.editMessageText(
+        ctx.chat?.id!,
+        ctx.session.messageId,
+        ctx.t(T.ScholarshipRequest, { course, error: 0 }),
+        { parse_mode: "HTML", reply_markup: inlineKeyboard },
+      );
+      break;
+    }
+    case CallType.Ok: {
+      const scholarship = logic.calculate(
+        opts.gpa,
+        ctx.session.scholarshipCourse,
+      );
+
+      await ctx.api.editMessageText(
+        ctx.chat?.id!,
+        ctx.session.messageId,
+        ctx.t(T.ScholarshipResponse, {
+          course,
+          gpa: opts.gpa,
+          scholarship,
+        }),
+        { parse_mode: "HTML", reply_markup: inlineKeyboard },
+      );
+      break;
+    }
+    case CallType.Err: {
+      await ctx.api.editMessageText(
+        ctx.chat?.id!,
+        ctx.session.messageId,
+        ctx.t(T.ScholarshipRequest, { course, error: 1 }),
+        { parse_mode: "HTML", reply_markup: inlineKeyboard },
+      );
+    }
+  }
 }
 
 composer.callbackQuery(
   T.ButtonMainMenuScholarship,
-  async (ctx) => await main(ctx, false, undefined),
+  async (ctx) => await main(ctx, { callType: CallType.Request }),
 );
 composer.callbackQuery(
   T.ButtonBackToScholarship,
-  async (ctx) => await main(ctx, false, undefined),
+  async (ctx) => await main(ctx, { callType: CallType.Request }),
 );
 
 composer.callbackQuery(T.ButtonScholarshipSelectCourse, async (ctx) => {
@@ -81,26 +103,24 @@ composer.callbackQuery(T.ButtonScholarshipSelectCourse, async (ctx) => {
 
 composer.callbackQuery(T.CourseB23, async (ctx) => {
   ctx.session.scholarshipCourse = ScholarshipCourse.B23;
-  return await main(ctx, false, undefined);
+  return await main(ctx, { callType: CallType.Request });
 });
 
 composer.callbackQuery(T.CourseB22Plus, async (ctx) => {
   ctx.session.scholarshipCourse = ScholarshipCourse.B22Plus;
-  return await main(ctx, false, undefined);
+  return await main(ctx, { callType: CallType.Request });
 });
 
 export async function onMessage(ctx: MyContext) {
-  const grades = ctx.message?.text;
-  await ctx.deleteMessage();
-
-  if (grades === undefined) {
-    return await main(ctx, true, undefined);
-  }
+  let opts: Options;
 
   try {
-    const gpa = logic.parseGpa(grades);
-    return await main(ctx, false, gpa);
+    const grades = ctx.message?.text;
+    await ctx.deleteMessage();
+    opts = { callType: CallType.Ok, gpa: logic.parseGpa(grades!) };
   } catch (_) {
-    return await main(ctx, true, undefined);
+    opts = { callType: CallType.Err };
   }
+
+  return await main(ctx, opts);
 }
