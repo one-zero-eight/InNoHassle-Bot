@@ -3,13 +3,16 @@ import { Composer, InlineKeyboard } from "grammy";
 import State from "~/bot/session/state.ts";
 import type MyContext from "~/bot/context.ts";
 import T from "~/labels.ts";
+import * as mainMenu from "~/conversations/main_menu.ts";
 
 export const composer = new Composer<MyContext>();
 
 composer.command(T.CommandStart, async (ctx) => {
   if (ctx.session.state !== State.Start) {
-    ctx.reply("Warning");
-    return;
+    return await mainMenu.mainMenu(
+      ctx,
+      { callType: mainMenu.CallType.Restart },
+    );
   }
 
   const inlineKeyboard = new InlineKeyboard()
