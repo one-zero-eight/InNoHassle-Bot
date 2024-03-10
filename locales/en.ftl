@@ -81,8 +81,8 @@ scholarship--request =
 
     { $error ->
         [0] Please, send your grades separated by space. Example:
-        [1] <b><u>Please, send your true grades separated by space. Example:</u></b>
-        *[other] { -bug } scholarship--request
+        [1] <b>Please, send your <u>true</u> grades separated by space! Example:</b>
+        *[other] { -bug } <code>scholarship--request</code>.
     }
     <blockquote>B A A B C B P</blockquote>
 
@@ -104,7 +104,7 @@ settings =
     { $innohassleLinked ->
         [0] { -emoji.globe-with-meridians } <b>InNoHassle account:</b> not linked
         [1] { -emoji.globe-with-meridians } <b>InNoHassle account:</b> { $fullName }
-        *[other] { -bug } settings
+        *[other] { -bug } <code>settings</code>.
     }
 
 sport = [sport Sport]
